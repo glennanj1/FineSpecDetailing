@@ -60,10 +60,10 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Fine Spec Detailing{' '}
-          <span className={styles.logo}>
+          Fine Spec Detailing{' '}&copy; 2022
+          {/* <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
+          </span> */}
         </a>
       </footer>
     </div>
