@@ -2,6 +2,10 @@
   padding: 0 2rem;
 }
 
+.comingSoon {
+  font-size: 1.5rem;
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;
