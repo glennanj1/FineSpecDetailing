@@ -13,7 +13,6 @@ export default function Index() {
       <Link href="/">
       </Link>
       <Pricing />
-
     </Container>
   );
 }
