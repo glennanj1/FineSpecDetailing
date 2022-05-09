@@ -42,7 +42,7 @@ const tiers = [
     buttonVariant: 'outlined',
   },
   {
-    title: 'Exterior',
+    title: 'Exterior + Detail',
     subheader: 'Foam Wash',
     price: '150',
     description: [
@@ -112,7 +112,7 @@ function PricingContent() {
             <Link
               variant="button"
               color="text.primary"
-              href="#"
+              href="/features"
               sx={{ my: 1, mx: 1.5 }}
             >
               Features
@@ -120,18 +120,18 @@ function PricingContent() {
             <Link
               variant="button"
               color="text.primary"
-              href="#"
+              href="/reviews"
               sx={{ my: 1, mx: 1.5 }}
             >
-              Enterprise
+              Reviews
             </Link>
             <Link
               variant="button"
               color="text.primary"
-              href="#"
+              href="/faq"
               sx={{ my: 1, mx: 1.5 }}
             >
-              Support
+              FAQ
             </Link>
           </nav>
           <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
@@ -148,10 +148,10 @@ function PricingContent() {
           color="text.primary"
           gutterBottom
         >
-          Pricing
+          Take a look at what we have to offer
         </Typography>
         <Typography variant="h5" align="center" color="text.secondary" component="p">
-          We have the best plans for you
+          Prices as low as $75.99
         </Typography>
       </Container>
       {/* End hero unit */}
@@ -240,7 +240,7 @@ function PricingContent() {
               <ul>
                 {footer.description.map((item) => (
                   <li key={item}>
-                    <Link href="#" variant="subtitle1" color="text.secondary">
+                    <Link href={`/${footer.title}`} variant="subtitle1" color="text.secondary">
                       {item}
                     </Link>
                   </li>
