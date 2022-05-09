@@ -128,7 +128,7 @@ function PricingContent() {
             <Link
               variant="button"
               color="text.primary"
-              href="/faq"
+              href="/FAQ"
               sx={{ my: 1, mx: 1.5 }}
             >
               FAQ
