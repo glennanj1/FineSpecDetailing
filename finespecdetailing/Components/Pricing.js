@@ -112,7 +112,7 @@ function PricingContent() {
             <Link
               variant="button"
               color="text.primary"
-              href="/features"
+              href="/Features"
               sx={{ my: 1, mx: 1.5 }}
             >
               Features
@@ -120,7 +120,7 @@ function PricingContent() {
             <Link
               variant="button"
               color="text.primary"
-              href="/reviews"
+              href="/Reviews"
               sx={{ my: 1, mx: 1.5 }}
             >
               Reviews
