@@ -8,7 +8,7 @@ import theme from '../src/theme';
 import createEmotionCache from '../src/createEmotionCache';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import Nav from '../Components/Nav';
-import Footer from '../components/Footer'
+import Footer from '../Components/Footer'
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
