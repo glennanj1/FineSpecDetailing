@@ -7,7 +7,7 @@ export default function Copyright() {
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
       <MuiLink color="inherit" >
-        Fine Spec Detailing
+        Code Cloud
       </MuiLink>{' '}
       {new Date().getFullYear()}.
     </Typography>
