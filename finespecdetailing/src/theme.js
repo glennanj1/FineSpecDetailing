@@ -6,7 +6,7 @@ const theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#393D3F',
+      main: '#C0C0C0',
     },
     secondary: {
       main: '#6200ea',
@@ -15,6 +15,22 @@ const theme = createTheme({
       main: red.A400,
     },
   },
+  text: {
+    primary: '#7c00ff',
+    secondary: '#6200ea',
+  }
+//   components: {
+//       MuiFormControl: {
+//         styleOverrides: {
+//             colorInherit: {
+//                 backgroundColor: "#393D3F",
+//             },
+//         },
+//         defaultProps: {
+//             color: "#393D3F",
+//         },
+//     },
+// },
 });
 
 export default theme;

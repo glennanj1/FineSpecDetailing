@@ -11,14 +11,14 @@ export default function Nav() {
   return (
     <>
     <Container maxWidth="md">
-         <AppBar
+      <AppBar
         position="static"
         color="default"
         elevation={0}
         sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
       >
         <Toolbar sx={{ flexWrap: 'wrap' }}>
-          <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1, color: '#6200ea'}}>
             Fine Spec Detailing
           </Typography>
           <nav>
@@ -47,7 +47,7 @@ export default function Nav() {
               FAQ
             </Link>
           </nav>
-          <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+          <Button href="/Login" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
             Login
           </Button>
         </Toolbar>

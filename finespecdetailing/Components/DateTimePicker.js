@@ -27,7 +27,7 @@ export default function DateTimePickers() {
   return (
          <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DateTimePicker
-                sx={{ width: 300 }}
+                sx={{ m: 1, bgcolor: "secondary.main", color: "secondary.main" }}
                 allowSameDateSelection={false}
                 renderInput={(props) => <TextField {...props} />}
                 disablePast
