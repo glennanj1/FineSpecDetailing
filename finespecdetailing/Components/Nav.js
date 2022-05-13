@@ -19,7 +19,9 @@ export default function Nav() {
       >
         <Toolbar sx={{ flexWrap: 'wrap' }}>
           <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-            Fine Spec Detailing
+            <Link href="/">
+              Fine Spec Detailing
+            </Link>
           </Typography>
           <nav>
             <Link

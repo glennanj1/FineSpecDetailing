@@ -27,7 +27,6 @@ export default function ComboBox() {
   //props state
   const [value, setValue] = useState('');
 
-  const [service, setService] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
