@@ -4,12 +4,11 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
-export default function DateTimePickers() {
-  const [value, setValue] = useState('');
+export default function DateTimePickers(props) {
 
   useEffect(() => {
-    console.log(value);
-  }, [value]);
+    console.log(props.value)
+  }, [props.value]);
 
   let disableWeekends = (date) => {
     let newDate = (((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '-' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '-' + date.getFullYear());
@@ -39,7 +38,7 @@ export default function DateTimePickers() {
                 renderInput={(props) => <TextField {...props} />}
                 disablePast
                 label="DateTimePicker"
-                value={value}
+                value={props.value}
                 showTodayButton={true}
                 minutesStep={30}
                 minTime={new Date(2020, 8, 5, 9, 0)}
@@ -47,7 +46,7 @@ export default function DateTimePickers() {
                 shouldDisableTime={disableTime}
                 shouldDisableDate={disableWeekends}
                 onChange={(newValue) => {
-                setValue(newValue);
+                  props.setValue(newValue);
                 }}
             />
           </LocalizationProvider>

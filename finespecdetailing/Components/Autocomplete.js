@@ -24,6 +24,8 @@ export default function ComboBox() {
   const [model, setModel] = useState("");
   //api load
   const [models, setModels] = useState([]);
+  //props state
+  const [value, setValue] = useState('');
   useEffect(() => {
     if (year !== "") {
       setDisableMake(false);
@@ -205,7 +207,7 @@ export default function ComboBox() {
                 </TextField>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <BasicDateTimePickers />
+                <BasicDateTimePickers value={value} setValue={setValue} />
               </Grid>
             </Grid>
             <Button
