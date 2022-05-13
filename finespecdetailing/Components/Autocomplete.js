@@ -131,8 +131,26 @@ export default function ComboBox() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
-  };
+    fetch("/api/bookings/", { 
+          method: "POST", 
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            phone: phone,
+            service: service,
+            accepted: false,
+            year: year,
+            make: make,
+            model: model,
+            car: models
+          })
+      }).then(r => r.json()).then(d => {
+        alert("Booking Submitted");
+      }).catch(e => {
+        console.log(e);
+      });
+    }
+    
 
   const handleServiceChange = e => {
     e.preventDefault();
@@ -245,7 +263,6 @@ export default function ComboBox() {
                   required
                   id="service"
                   select
-                  required
                   value={service}
                   label="Service"
                   helperText="Please select your service"
