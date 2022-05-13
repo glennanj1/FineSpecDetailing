@@ -26,6 +26,13 @@ export default function ComboBox() {
   const [models, setModels] = useState([]);
   //props state
   const [value, setValue] = useState('');
+
+  const [service, setService] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+
+
   useEffect(() => {
     if (year !== "") {
       setDisableMake(false);
@@ -67,7 +74,8 @@ export default function ComboBox() {
       setDisableMake(true);
       setDisableModel(true);
     }
-  }, [year, make, model]);
+    console.log(name, email, phone, service, value);
+  }, [year, make, model, name, email, phone, service, value]);
 
   const handleChange = (event, value, reason) => {
     console.log(value);
@@ -95,12 +103,37 @@ export default function ComboBox() {
     }
   };
 
+  const handleTextChange = e => {
+    console.log("text change");
+    switch(e.target.id) {
+      case "service":
+        setService(e.target.value);
+        break;
+      case "name":
+        setName(e.target.value);
+        break;
+      case "email":
+        setEmail(e.target.value);
+        break;
+      case "phone":
+        setPhone(e.target.value);
+        break;
+      default:
+        break;
+    }
+    
+  }
   const handleInputChange = (e, v, r) => {};
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(e);
   };
+
+  const handleServiceChange = e => {
+    e.preventDefault();
+    setService(e.target.value);
+  }
 
   return (
     <>
@@ -122,13 +155,13 @@ export default function ComboBox() {
           </Typography>
           <Box
             component="form"
-            noValidate
             onSubmit={handleSubmit}
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <Autocomplete
+
                   disablePortal
                   fullWidth
                   id="year"
@@ -137,7 +170,7 @@ export default function ComboBox() {
                   onChange={handleChange}
                   onInputChange={handleInputChange}
                   renderInput={(params) => (
-                    <TextField {...params} label="Year" />
+                    <TextField {...params} required label="Year" />
                   )}
                 />
               </Grid>
@@ -151,12 +184,13 @@ export default function ComboBox() {
                   value={make}
                   onChange={handleChange}
                   renderInput={(params) => (
-                    <TextField {...params} label="Make" />
+                    <TextField {...params} required label="Make" />
                   )}
                 />
               </Grid>
               <Grid item xs={12}>
                 <Autocomplete
+                  required
                   loading={isloading}
                   disablePortal
                   fullWidth
@@ -166,7 +200,7 @@ export default function ComboBox() {
                   value={model}
                   onChange={handleChange}
                   renderInput={(params) => (
-                    <TextField {...params} label="Model" />
+                    <TextField {...params} required label="Model" />
                   )}
                 />
               </Grid>
@@ -178,26 +212,40 @@ export default function ComboBox() {
                   id="name"
                   label="Name"
                   defaultValue=""
+                  onChange={handleTextChange}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
                   required
-                  id="number"
-                  autoComplete="tel"
-                  label="Number"
+                  autoComplete="email"
+                  id="email"
+                  label="Email"
                   defaultValue=""
+                  onChange={handleTextChange}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  fullWidth
+                  required
+                  id="phone"
+                  autoComplete="tel"
+                  label="phone"
+                  defaultValue=""
+                  onChange={handleTextChange}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   id="service"
-                  
                   select
-                  value={services}
+                  required
+                  value={service}
                   label="Service"
                   helperText="Please select your service"
+                  onChange={handleServiceChange}
                 >
                   {services.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
@@ -210,6 +258,7 @@ export default function ComboBox() {
                 <BasicDateTimePickers value={value} setValue={setValue} />
               </Grid>
             </Grid>
+            <h5>by clicking book now you agree to our <a href="/Legal" >terms and conditions</a></h5>
             <Button
               type="submit"
               fullWidth
@@ -325,23 +374,23 @@ const makes = [
 ];
 const services = [
   {
-    value: "USD",
+    value: "Full Detail",
     label: "Full Detail",
   },
   {
-    value: "EUR",
+    value: "Full Exterior Detail Only",
     label: "Full Exterior Detail Only",
   },
   {
-    value: "BTC",
+    value: "Full Interior Detail Only",
     label: "Full Interior Detail Only",
   },
   {
-    value: "JPY",
+    value: "Maintenance Wash",
     label: "Maintenance Wash",
   },
   {
-    value: "JPY",
+    value: "Work Vehicle Detail",
     label: "Work Vehicle Detail",
   },
 ];
