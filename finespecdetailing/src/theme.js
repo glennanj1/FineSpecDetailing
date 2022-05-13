@@ -28,6 +28,22 @@ const theme = createTheme({
     //   paper: '#333131',
     // },
   },
+  text: {
+    primary: '#7c00ff',
+    secondary: '#6200ea',
+  }
+//   components: {
+//       MuiFormControl: {
+//         styleOverrides: {
+//             colorInherit: {
+//                 backgroundColor: "#393D3F",
+//             },
+//         },
+//         defaultProps: {
+//             color: "#393D3F",
+//         },
+//     },
+// },
 });
 
 export default theme;

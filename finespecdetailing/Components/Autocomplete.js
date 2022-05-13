@@ -7,7 +7,6 @@ import BasicDateTimePickers from "../Components/DateTimePicker.js";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Grid from "@mui/material/Grid";
-import CssBaseline from "@mui/material/CssBaseline";
 import LocalCarWashIcon from '@mui/icons-material/LocalCarWash';
 import Typography from "@mui/material/Typography";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -22,6 +21,7 @@ export default function ComboBox() {
   const [make, setMake] = useState("");
   const [disableModel, setDisableModel] = useState(true);
   const [model, setModel] = useState("");
+  const [service, setService] = useState("");
   //api load
   const [models, setModels] = useState([]);
   //props state
@@ -81,6 +81,7 @@ export default function ComboBox() {
     console.log(value);
     console.log(reason);
     console.log(event.target.id.split("-")[0]);
+
     switch (event.target.id.split("-")[0]) {
       case "year":
         console.log("year change");
@@ -92,6 +93,10 @@ export default function ComboBox() {
       case "model":
         setModel(event.target.innerText);
         break;
+      case "service": {
+        setService(event.target.innerText);
+        break;
+      }
       default:
         if (reason === "clear") {
           setYear("");
@@ -138,7 +143,6 @@ export default function ComboBox() {
   return (
     <>
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
         <Box
           sx={{
             marginTop: 8,
@@ -239,6 +243,7 @@ export default function ComboBox() {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  required
                   id="service"
                   select
                   required
