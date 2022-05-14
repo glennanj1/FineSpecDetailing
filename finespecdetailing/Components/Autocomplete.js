@@ -125,15 +125,19 @@ export default function ComboBox() {
       default:
         break;
     }
-    
   }
-  const handleInputChange = (e, v, r) => {};
+  const handleInputChange = (e, v, r) => {}; 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetch("/api/bookings/", { 
-          method: "POST", 
-          body: JSON.stringify({
+    const handleSubmit = async (e) => {
+      console.log(e);
+      e.preventDefault();
+      const res = await fetch('/api/bookings/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          booking: {
             name: name,
             email: email,
             phone: phone,
@@ -143,13 +147,27 @@ export default function ComboBox() {
             make: make,
             model: model,
             car: models
-          })
-      }).then(r => r.json()).then(d => {
-        alert("Booking Submitted");
-      }).catch(e => {
-        console.log(e);
+          }
+        }),
       });
-    }
+      const data = await res.json();
+      console.log(data);
+      if (data.success === true) {
+        alert("Booking Successful");
+        setYear("");
+        setMake("");
+        setModel("");
+        setModels([]);
+        setName("");
+        setEmail("");
+        setPhone("");
+        setService("");
+        setService("");
+        setValue(new Date());
+      } else {
+        alert("Booking Failed Try Again");
+      }
+    };
     
 
   const handleServiceChange = e => {
@@ -233,6 +251,7 @@ export default function ComboBox() {
                   id="name"
                   label="Name"
                   defaultValue=""
+                  value={name}
                   onChange={handleTextChange}
                 />
               </Grid>
@@ -244,6 +263,7 @@ export default function ComboBox() {
                   id="email"
                   label="Email"
                   defaultValue=""
+                  value={email}
                   onChange={handleTextChange}
                 />
               </Grid>
@@ -255,6 +275,7 @@ export default function ComboBox() {
                   autoComplete="tel"
                   label="phone"
                   defaultValue=""
+                  value={phone}
                   onChange={handleTextChange}
                 />
               </Grid>
