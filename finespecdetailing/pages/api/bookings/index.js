@@ -17,13 +17,13 @@ export default async function handler(req, res) {
       break
     case 'POST':
       try {
-        console.log(req.body)
         const booking = await Booking.create(
-          req.body
+           req.body.booking
         ) 
-        res.status(201).json({ success: true, data: booking })
+        res.status(201).json({ success: true, data:  booking  })
       } catch (error) {
-        res.status(400).json({ success: false })
+        console.log(error)
+        res.status(400).json({ success: false, error })
       }
       break
     default:
