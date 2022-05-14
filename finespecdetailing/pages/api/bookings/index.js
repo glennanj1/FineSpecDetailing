@@ -1,5 +1,5 @@
 import dbConnect from '../../../lib/db'
-import Booking from '../../../models/Booking'
+import Booking from '../../../Models/Booking.js'
 
 export default async function handler(req, res) {
   const { method } = req
