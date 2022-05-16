@@ -27,7 +27,7 @@ export default function DateTimePickers(props) {
   let disableTime = (timevalue, clocktype) => {
     // console.log(timevalue);
     // console.log(clocktype);
-    return clocktype === "minutes" && timevalue < 30 || clocktype === "hours" && timevalue < 12;
+    // return clocktype === "minutes" && timevalue < 30 || clocktype === "hours" && timevalue < 12;
   }
 
   return (
@@ -42,7 +42,7 @@ export default function DateTimePickers(props) {
                 showTodayButton={true}
                 minutesStep={30}
                 minTime={new Date(2020, 8, 5, 9, 0)}
-                maxTime={new Date(0, 0, 0, 18)}
+                // maxTime={new Date(0, 0, 0, 18)}
                 shouldDisableTime={disableTime}
                 shouldDisableDate={disableWeekends}
                 onChange={(newValue) => {
