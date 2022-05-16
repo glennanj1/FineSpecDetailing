@@ -31,6 +31,12 @@ const BookingSchema = new mongoose.Schema({
   car: {
     type: Array,
   },
+  appointment: {
+    type: Date
+  },
+  paid: {
+    type: Boolean,
+  }
 })
 
 export default mongoose.models.Booking || mongoose.model('Booking', BookingSchema)
