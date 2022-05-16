@@ -13,8 +13,15 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
+import { useSession, getSession } from "next-auth/react"
 
 export default function ComboBox() {
+  //session check
+  const { data: session, status } = useSession()
+  //set today
+  const today = new Date();
+  //set default date as tomorrow 
+  const tomorrow = today.setDate(today.getDate() + 2);
   const [isloading, setLoading] = useState(false);
   const [year, setYear] = useState("");
   const [disableMake, setDisableMake] = useState(true);
@@ -25,7 +32,7 @@ export default function ComboBox() {
   //api load
   const [models, setModels] = useState([]);
   //props state
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(tomorrow);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -146,7 +153,8 @@ export default function ComboBox() {
             year: year,
             make: make,
             model: model,
-            car: models
+            car: models,
+            appointment: value
           }
         }),
       });
@@ -163,7 +171,7 @@ export default function ComboBox() {
         setPhone("");
         setService("");
         setService("");
-        setValue(new Date());
+        setValue(null);
       } else {
         alert("Booking Failed Try Again");
       }
@@ -173,6 +181,13 @@ export default function ComboBox() {
   const handleServiceChange = e => {
     e.preventDefault();
     setService(e.target.value);
+  }
+  if (status === "loading") {
+    return <p>Loading...</p>
+  }
+
+  if (status === "unauthenticated") {
+    return <p>Please Sign in before booking.</p>
   }
 
   return (
@@ -348,7 +363,6 @@ const years = [
   "2019",
   "2020",
 ];
-
 const makes = [
   "",
   "Buick",
