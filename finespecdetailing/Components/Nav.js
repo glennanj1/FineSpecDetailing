@@ -5,9 +5,10 @@ import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-
+import { useSession, signIn, signOut } from "next-auth/react"
 
 export default function Nav() {
+  const { data: session } = useSession()
   return (
     <>
     <Container maxWidth="md">
@@ -49,9 +50,16 @@ export default function Nav() {
               FAQ
             </Link>
           </nav>
-          <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-            Login
-          </Button>
+          {session ? (
+            <Button onClick={() => signOut()} variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+              Logout
+            </Button>
+          ) : 
+          (
+            <Button onClick={() => signIn()} variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+              Login
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </Container>
