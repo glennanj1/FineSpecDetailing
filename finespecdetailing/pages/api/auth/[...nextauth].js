@@ -13,11 +13,12 @@ export default NextAuth({
 
   ],
   theme: {
-    colorScheme: "light",
+    colorScheme: "dark",
   },
   callbacks: {
-
-    async session({ session, user, token }) {
+    async session({ session, user, account, token }) {
+      session.userId = user.id;  
+      session.status = user.status;
       return session
     },
   },
