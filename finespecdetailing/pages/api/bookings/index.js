@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     case 'GET':
       try {
         if (session) {
-          const bookings = await Booking.find({}) 
+          const bookings = await Booking.find({Account: session.userId}) 
           res.status(200).json({ success: true, data: bookings })
         }
         else {
@@ -24,21 +24,22 @@ export default async function handler(req, res) {
       }
       break
     case 'POST':
-      try {
-        if (session) {
-        const booking = await Booking.create(
-           req.body.booking
-        )
-        res.status(201).json({ success: true, data:  booking  })
-        } else {
+      if (session) {
+        try {
+          const booking = await Booking.create(
+            req.body.booking
+          )  
+          res.status(201).json({ success: true, data:  booking  })
+          } catch (error) {
+            console.log(error)
+            res.status(400).json({ success: false, error })
+          } 
+      } else {
           res.send({
-            error: "You must be sign in to view the protected content on this page.",
-          })
-        }
-      } catch (error) {
-        console.log(error)
-        res.status(400).json({ success: false, error })
-      }
+          error: "You must be sign in to view the protected content on this page.",
+      })
+    }
+      
       break
     default:
       res.status(400).json({ success: false })
