@@ -51,9 +51,14 @@ export default function Nav() {
             </Link>
           </nav>
           {session ? (
+            <>
             <Button onClick={() => signOut()} variant="outlined" sx={{ my: 1, mx: 1.5 }}>
               Logout
             </Button>
+            <Button href="/bookings" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+             Bookings
+            </Button>
+            </>
           ) : 
           (
             <Button onClick={() => signIn()} variant="outlined" sx={{ my: 1, mx: 1.5 }}>
