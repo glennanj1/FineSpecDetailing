@@ -1,17 +1,14 @@
 import mongoose from 'mongoose'
-
+const {Schema} = require('mongoose');
 const BookingSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'Please provide a name for this pet.'],
   },
   email: {
     type: String,
-    required: [true, "Please provide the pet owner's name"],
   },
   phone: {
     type: String,
-    required: [true, 'Please specify the species of your pet.'],
   },
   service: {
     type: String,
@@ -36,7 +33,11 @@ const BookingSchema = new mongoose.Schema({
   },
   paid: {
     type: Boolean,
-  }
-})
+  },
+  Account: {
+    type: Schema.Types.ObjectId,
+    ref: 'accounts'
+  },
+}, {timestamps: true})
 
 export default mongoose.models.Booking || mongoose.model('Booking', BookingSchema)
