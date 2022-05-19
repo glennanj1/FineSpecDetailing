@@ -14,14 +14,15 @@ import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import { useSession, getSession } from "next-auth/react"
+import { useRouter } from 'next/router'
+import { mutate } from 'swr'
+
 
 export default function ComboBox() {
+  const router = useRouter()
   //session check
   const { data: session, status } = useSession()
-  //set today
-  const today = new Date();
-  //set default date as tomorrow 
-  const tomorrow = today.setDate(today.getDate() + 2);
+
   const [isloading, setLoading] = useState(false);
   const [year, setYear] = useState("");
   const [disableMake, setDisableMake] = useState(true);
@@ -32,7 +33,7 @@ export default function ComboBox() {
   //api load
   const [models, setModels] = useState([]);
   //props state
-  const [value, setValue] = useState(tomorrow);
+  const [value, setValue] = useState(null);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -40,6 +41,7 @@ export default function ComboBox() {
 
 
   useEffect(() => {
+    debugger;
     if (year !== "") {
       setDisableMake(false);
       console.log("disable make");
@@ -154,7 +156,8 @@ export default function ComboBox() {
             make: make,
             model: model,
             car: models,
-            appointment: value
+            appointment: value,
+            Account: session.userId
           }
         }),
       });
@@ -172,6 +175,8 @@ export default function ComboBox() {
         setService("");
         setService("");
         setValue(null);
+        debugger;
+        router.push(`/booking/${data.data._id}`);
       } else {
         alert("Booking Failed Try Again");
       }
@@ -215,7 +220,6 @@ export default function ComboBox() {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <Autocomplete
-
                   disablePortal
                   fullWidth
                   id="year"
@@ -450,3 +454,4 @@ const services = [
     label: "Work Vehicle Detail",
   },
 ];
+
