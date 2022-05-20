@@ -78,7 +78,7 @@ function PricingContent() {
           color="text.primary"
           gutterBottom
         >
-          Take a look at what we have to offer
+          First Class Car Detailing
         </Typography>
         <Typography variant="h5" align="center" color="text.secondary" component="p">
           Prices as low as $75.99

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
-
+import Container from '@mui/material/Container'
 const fetcher = async (url) => {
   const res = await fetch(url)
   const data = await res.json()
@@ -21,7 +21,8 @@ export default function Booking() {
   if (error) return <div>{error.message}</div>
   if (!data) return <div>Loading...</div>
   return (
-    <div>
+    <Container component="main" maxWidth="xs">
+        <div>
         <h5>{data.data.id}</h5>
         <h5>
             {data.data.name}
@@ -43,5 +44,7 @@ export default function Booking() {
             {data.data.createdAt}
         </h5>
     </div>
+      </Container>
+    
   )
 }
