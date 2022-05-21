@@ -14,6 +14,7 @@ import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 import { Router, useRouter } from 'next/router';
 
+
 const tiers = [
   {
     title: 'Full Detail',

@@ -6,7 +6,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
 import theme from '../src/theme';
 import createEmotionCache from '../src/createEmotionCache';
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import Nav from '../Components/Nav';
 import Footer from '../Components/Footer'
 import { SessionProvider } from "next-auth/react"
