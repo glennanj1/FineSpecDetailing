@@ -4,7 +4,7 @@ import Pricing from '../Components/Pricing';
 
 export default function Index() {
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" style={{backgroundImage: 'url(/porche.png)', backgroundPosition: 'bottom', backgroundAttachment: 'fixed', backgroundSize: 'contain'}}>
       <Pricing />
     </Container>
   );
