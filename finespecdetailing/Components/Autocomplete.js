@@ -115,19 +115,15 @@ export default function ComboBox() {
   };
 
   const handleTextChange = (event, value) => {
-    console.log("text change");
     switch(event.target.id) {
-      case "service":
-        setService(value);
-        break;
       case "name":
-        setName(value);
+        setName(event.target.value);
         break;
       case "email":
-        setEmail(value);
+        setEmail(event.target.value);
         break;
       case "phone":
-        setPhone(value);
+        setPhone(event.target.value);
         break;
       default:
         break;
@@ -136,7 +132,6 @@ export default function ComboBox() {
   const handleInputChange = (e, v, r) => {}; 
 
     const handleSubmit = async (e) => {
-      console.log(e);
       e.preventDefault();
       const res = await fetch('/api/bookings/', {
         method: 'POST',
