@@ -25,8 +25,8 @@ const BookingSchema = new mongoose.Schema({
   model: {
     type: String,
   },
-  car: {
-    type: Array,
+  type: { 
+    type: String,
   },
   appointment: {
     type: Date
