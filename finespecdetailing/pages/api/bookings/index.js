@@ -1,6 +1,7 @@
 import dbConnect from '../../../lib/db'
 import Booking from '../../../Models/Booking.js'
 import { getSession } from "next-auth/react"
+import Car from '../../../Models/Car.js'
 
 export default async function handler(req, res) {
   const { method } = req
@@ -29,7 +30,21 @@ export default async function handler(req, res) {
       break
     case 'POST':
       if (session) {
+        console.log(req.body.car);
         try {
+          req.body.car.map((c) => {
+            //Model.findByIdAndUpdate(id, { $set: { name: 'SOME_VALUE' }}, { upsert: true  }, callback)
+           
+            Car.findOne({id: c.id}, (err, car) => { 
+              if (err) {
+                console.log(err);
+              }
+              else {
+                console.log(car);
+                car === null || car === undefined ? Car.create(c) : console.log('car found');
+              }
+            })
+          })
           const booking = await Booking.create(
             req.body.booking
           )  
