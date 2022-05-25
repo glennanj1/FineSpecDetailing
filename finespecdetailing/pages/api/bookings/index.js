@@ -16,7 +16,7 @@ export default async function handler(req, res) {
           res.status(200).json({ success: true, data: bookings })
         }
         if (session) {
-          const bookings = await Booking.find({Account: session.user.email}) 
+          const bookings = await Booking.find({email: session.user.email}) 
           res.status(200).json({ success: true, data: bookings })
         }
         else {
