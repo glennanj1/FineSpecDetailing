@@ -9,10 +9,10 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import StarIcon from '@mui/icons-material/StarBorder';
 import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
-import { Router, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
+
 
 const tiers = [
   {
@@ -66,11 +66,11 @@ function PricingContent() {
   }
   return (
     <React.Fragment>
-      <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
+      <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none'} }} />
       <CssBaseline />
-      
+
       {/* Hero unit */}
-      <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
+      <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6}}>
         <Typography
           component="h1"
           variant="h2"
@@ -78,14 +78,14 @@ function PricingContent() {
           color="text.primary"
           gutterBottom
         >
-          Take a look at what we have to offer
+          Fine Spec Detailing
         </Typography>
         <Typography variant="h5" align="center" color="text.secondary" component="p">
           Prices as low as $75.99
         </Typography>
       </Container>
       {/* End hero unit */}
-      <Container maxWidth="md" component="main">
+      <Container maxWidth="md" component="main" sx={{background: 'transparent'}}>
         <Grid container spacing={5} alignItems="flex-end">
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
@@ -96,7 +96,7 @@ function PricingContent() {
               sm={tier.title === 'Full Detail' ? 12 : 6}
               md={4}
             >
-              <Card>
+              <Card sx={{background: '#000000a1'}}>
                 <CardHeader
                   title={tier.title}
                   subheader={tier.subheader}
@@ -112,7 +112,7 @@ function PricingContent() {
                         : theme.palette.grey[700],
                   }}
                 />
-                <CardContent>
+                <CardContent >
                   <Box
                     sx={{
                       display: 'flex',
