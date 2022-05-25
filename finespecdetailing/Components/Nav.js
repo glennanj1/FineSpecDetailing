@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import { useSession, signIn, signOut } from "next-auth/react"
+import fineLogo from '../public/fineLogo.png'
+import Image from 'next/image'
 
 export default function Nav() {
   const { data: session } = useSession()
@@ -21,7 +23,8 @@ export default function Nav() {
         <Toolbar sx={{ flexWrap: 'wrap' }}>
           <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
             <Link href="/">
-              Fine Spec Detailing
+              <Image src={fineLogo} width={150} height={30} layout="fixed" />
+              {/* Fine Spec Detailing */}
             </Link>
           </Typography>
           <nav>

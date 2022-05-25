@@ -16,7 +16,8 @@ export default function Index() {
             <Porche />
         </Canvas> 
       </main>
+    {/* <Container maxWidth="lg" style={{backgroundImage: 'url(/porche.png)', backgroundPosition: 'bottom', backgroundAttachment: 'fixed', backgroundSize: 'contain'}}>
       <Pricing />
-    </Container>
+    </Container> */}
   );
 }

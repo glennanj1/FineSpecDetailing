@@ -9,13 +9,9 @@ import Avatar from "@mui/material/Avatar";
 import Grid from "@mui/material/Grid";
 import LocalCarWashIcon from '@mui/icons-material/LocalCarWash';
 import Typography from "@mui/material/Typography";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
-import Link from "@mui/material/Link";
 import { useSession, getSession } from "next-auth/react"
 import { useRouter } from 'next/router'
-import { mutate } from 'swr'
 
 
 export default function ComboBox() {
@@ -29,11 +25,14 @@ export default function ComboBox() {
   const [make, setMake] = useState("");
   const [disableModel, setDisableModel] = useState(true);
   const [model, setModel] = useState("");
+  const [type, setType] = useState("");
   const [service, setService] = useState("");
   //api load
   const [models, setModels] = useState([]);
   //props state
   const [value, setValue] = useState(null);
+  //full car
+  const [car, setCar] = useState([]);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -41,7 +40,6 @@ export default function ComboBox() {
 
 
   useEffect(() => {
-    debugger;
     if (year !== "") {
       setDisableMake(false);
       console.log("disable make");
@@ -58,11 +56,13 @@ export default function ComboBox() {
               console.log(d);
               setLoading(false);
               if (d.length > 0) {
+                setCar(d);
                 let a = [];
                 d.map((m) => {
-                  a.push(m.model);
+                  a.push({value: m.type, label: m.model});
                 });
                 setModels(a);
+                debugger;
               } else {
                 //needs to be a toast
                 alert("empty list try again");
@@ -86,27 +86,25 @@ export default function ComboBox() {
   }, [year, make, model, name, email, phone, service, value]);
 
   const handleChange = (event, value, reason) => {
-    console.log(value);
-    console.log(reason);
-    console.log(event.target.id.split("-")[0]);
-
     switch (event.target.id.split("-")[0]) {
       case "year":
-        console.log("year change");
-        setYear(event.target.innerText);
+        setYear(value);
         break;
       case "make":
-        setMake(event.target.innerText);
+        setMake(value);
         break;
       case "model":
-        setModel(event.target.innerText);
+        setType(value.value)
+        setModel(value.label);
         break;
       case "service": {
-        setService(event.target.innerText);
+        setService(value);
         break;
       }
       default:
+        console.log(reason)
         if (reason === "clear") {
+          setType("");
           setYear("");
           setMake("");
           setModel("");
@@ -116,20 +114,20 @@ export default function ComboBox() {
     }
   };
 
-  const handleTextChange = e => {
+  const handleTextChange = (event, value) => {
     console.log("text change");
-    switch(e.target.id) {
+    switch(event.target.id) {
       case "service":
-        setService(e.target.value);
+        setService(value);
         break;
       case "name":
-        setName(e.target.value);
+        setName(value);
         break;
       case "email":
-        setEmail(e.target.value);
+        setEmail(value);
         break;
       case "phone":
-        setPhone(e.target.value);
+        setPhone(value);
         break;
       default:
         break;
@@ -155,10 +153,11 @@ export default function ComboBox() {
             year: year,
             make: make,
             model: model,
-            car: models,
+            type: type,
             appointment: value,
             Account: session.userId
-          }
+          },
+          car: car,
         }),
       });
       const data = await res.json();
@@ -175,7 +174,6 @@ export default function ComboBox() {
         setService("");
         setService("");
         setValue(null);
-        debugger;
         router.push(`/booking/${data.data._id}`);
       } else {
         alert("Booking Failed Try Again");

@@ -19,6 +19,7 @@
     "@material-ui/lab": "^5.0.0-alpha.44",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
+    "@mui/x-data-grid": "^5.11.1",
     "@mui/x-date-pickers": "^5.0.0-alpha.2",
     "@next-auth/mongodb-adapter": "^1.0.3",
     "@react-three/drei": "^9.11.2",
