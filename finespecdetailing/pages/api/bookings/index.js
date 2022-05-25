@@ -10,8 +10,12 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
+        if (session && session.status === 'admin') {
+          const bookings = await Booking.find({});
+          res.status(200).json({ success: true, data: bookings })
+        }
         if (session) {
-          const bookings = await Booking.find({Account: session.userId}) 
+          const bookings = await Booking.find({Account: session.user.email}) 
           res.status(200).json({ success: true, data: bookings })
         }
         else {
