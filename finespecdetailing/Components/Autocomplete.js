@@ -20,13 +20,13 @@ export default function ComboBox() {
   const { data: session, status } = useSession()
 
   const [isloading, setLoading] = useState(false);
-  const [year, setYear] = useState("");
+  const [year, setYear] = useState(null);
   const [disableMake, setDisableMake] = useState(true);
-  const [make, setMake] = useState("");
+  const [make, setMake] = useState(null);
   const [disableModel, setDisableModel] = useState(true);
-  const [model, setModel] = useState("");
-  const [type, setType] = useState("");
-  const [service, setService] = useState("");
+  const [model, setModel] = useState(null);
+  const [type, setType] = useState(null);
+  const [service, setService] = useState(null);
   //api load
   const [models, setModels] = useState([]);
   //props state
@@ -34,16 +34,16 @@ export default function ComboBox() {
   //full car
   const [car, setCar] = useState([]);
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [name, setName] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [phone, setPhone] = useState(null);
 
 
   useEffect(() => {
-    if (year !== "") {
+    if (year !== null) {
       setDisableMake(false);
       console.log("disable make");
-      if (make !== "") {
+      if (make !== null) {
         setDisableModel(false);
         console.log("disable model");
         if (models.length > 0) {
@@ -62,14 +62,13 @@ export default function ComboBox() {
                   a.push({value: m.type, label: m.model});
                 });
                 setModels(a);
-                debugger;
               } else {
                 //needs to be a toast
                 alert("empty list try again");
                 setModels([]);
-                setModel("");
-                setMake("");
-                setYear("");
+                setModel(null);
+                setMake(null);
+                setYear(null);
               }
             })
             .catch((e) => {
@@ -104,10 +103,10 @@ export default function ComboBox() {
       default:
         console.log(reason)
         if (reason === "clear") {
-          setType("");
-          setYear("");
-          setMake("");
-          setModel("");
+          setType(null);
+          setYear(null);
+          setMake(null);
+          setModel(null);
           setModels([]);
         }
         break;
@@ -159,15 +158,15 @@ export default function ComboBox() {
       console.log(data);
       if (data.success === true) {
         alert("Booking Successful");
-        setYear("");
-        setMake("");
-        setModel("");
+        setYear(null);
+        setMake(null);
+        setModel(null);
         setModels([]);
-        setName("");
-        setEmail("");
-        setPhone("");
-        setService("");
-        setService("");
+        setName(null);
+        setEmail(null);
+        setPhone(null);
+        setService(null);
+        setService(null);
         setValue(null);
         router.push(`/booking/${data.data._id}`);
       } else {
@@ -293,6 +292,7 @@ export default function ComboBox() {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  fullWidth
                   required
                   id="service"
                   select
@@ -329,7 +329,6 @@ export default function ComboBox() {
 }
 
 const years = [
-  "",
   "1992",
   "1993",
   "1994",
@@ -361,7 +360,6 @@ const years = [
   "2020",
 ];
 const makes = [
-  "",
   "Buick",
   "MINI",
   "Volvo",
