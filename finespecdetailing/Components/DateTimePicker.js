@@ -35,7 +35,7 @@ export default function DateTimePickers(props) {
             <DateTimePicker
                 sx={{ width: 300 }}
                 allowSameDateSelection={false}
-                renderInput={(props) => <TextField required {...props} />}
+                renderInput={(props) => <TextField fullWidth required {...props} />}
                 disablePast
                 label="DateTimePicker"
                 value={props.value}
