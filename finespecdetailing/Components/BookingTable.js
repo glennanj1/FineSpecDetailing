@@ -110,7 +110,6 @@ export default function DataGridDemo() {
     <>
       {loading ? <div>Loading...</div> :
       <div style={{ height: 400, width: '100%' }}>
-        <h1>Hey Joey Here are all the current bookings</h1>
         <DataGrid
           rows={bookings}
           columns={columns}
