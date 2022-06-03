@@ -184,7 +184,11 @@ export default function ComboBox() {
   }
 
   if (status === "unauthenticated") {
-    return <p>Please Sign in before booking.</p>
+    return (
+      <Container component="main" maxWidth="md" style={{height: '30vh', display: 'flex', justifyContent: 'center', alignText: 'center', alignContent: 'center'}}>
+        <h1>Please Login to Continue</h1>
+      </Container>
+    )
   }
 
   return (
