@@ -87,7 +87,7 @@ const ResponsiveAppBar = () => {
               textDecoration: 'none',
             }}
           >
-            Detailing Done Right 🔥
+            🔥 Detailing
           </Typography>
           </Container>
 
