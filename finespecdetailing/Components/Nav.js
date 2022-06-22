@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 // import AdbIcon from '@mui/icons-material/Adb';
-// import Link from '@mui/material/Link';
+import Link from '@mui/material/Link';
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from 'next/router';
 
@@ -31,8 +31,8 @@ const ResponsiveAppBar = () => {
   React.useEffect(() => {
     console.log(session)
   }) 
-  const pages = ['About', 'Services', 'Reviews'];
-  const settings = ['Profile', 'Bookings', session ? (
+  const pages = ['Services', 'Contact'];
+  const settings = ['profile', 'bookings', session ? (
             <>
             <Button onClick={() => signOut()} variant="outlined" sx={{ my: 1, mx: 1.5 }}>
               Logout
@@ -67,8 +67,8 @@ const ResponsiveAppBar = () => {
   }
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="lg">
+    <AppBar sx={{background: '#121212'}} position="static">
+      <Container sx={{background: '#121212'}} maxWidth="lg">
         <Toolbar disableGutters>
           <Container component="div" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} >
             {/* <Image src={fineLogo} width={150} height={30} layout="fixed" onClick={handlePicClick} /> */}
@@ -122,7 +122,7 @@ const ResponsiveAppBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center"><Link href={`/${page}`} underline="none">{page}</Link></Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -139,7 +139,7 @@ const ResponsiveAppBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                <Link href={`/${page}`} underline="none">{page}</Link>
               </Button>
             ))}
           </Box>
@@ -168,7 +168,7 @@ const ResponsiveAppBar = () => {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography textAlign="center"><Link href={`/${setting}`} underline="none" sx={{textTransform: 'capitalize'}}>{setting}</Link></Typography>
                 </MenuItem>
               ))}
             </Menu>
