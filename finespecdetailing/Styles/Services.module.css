@@ -1,0 +1,36 @@
+@media screen and (min-width: 768px) {
+    .background {
+        background: none;
+    }
+    .firstContainer {
+        background-image: "url(/porche2.png)";
+        background-position: "bottom";
+        background-attachment: "fixed";
+        background-repeat: "no-repeat";
+        background-size: "contain";
+        z-index: "0";
+    }
+    .secondContainer {
+        background-image: "url(/porche2.png)";
+        background-position: "bottom";
+        background-attachment: "fixed";
+        background-repeat: "no-repeat";
+        background-size: "contain";
+        z-index: "0";
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .background {
+        background: url('/soap.png');
+        background-position: top;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    .firstContainer {
+        background: none;
+    }
+    .secondContainer {
+        background: none;
+    }
+}
