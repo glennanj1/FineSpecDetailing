@@ -79,13 +79,13 @@ export default function Footer() {
               <IconButton sx={{display: 'flex', justifyContent: 'center'}}>
                 <FacebookIcon />
               </IconButton>
-              <h3>FaceBook</h3>
+        
             </Grid>
             <Grid item xs={6} sm={3} key={'title'} className={styles.Grid}>
               <IconButton sx={{display: 'flex', justifyContent: 'center'}}>
                   <InstagramIcon />
               </IconButton>
-                <h3>Instagram</h3>
+              
             </Grid>
             <Grid item xs={6} sm={3} key={'title'} className={styles.Grid}>
               <IconButton sx={{display: 'flex', justifyContent: 'center'}}>
