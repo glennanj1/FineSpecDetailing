@@ -11,12 +11,13 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import Image from 'next/image'
 // import AdbIcon from '@mui/icons-material/Adb';
 import Link from '@mui/material/Link';
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from 'next/router';
 
-// import fineLogo from '../public/fineLogo.png'
+import fineLogo from '../public/fineLogo2.png'
 
 // import Image from 'next/image'
 // import { Router } from 'next/router';
@@ -32,7 +33,7 @@ const ResponsiveAppBar = () => {
     console.log(session)
   }) 
   const pages = ['Services', 'Contact'];
-  const settings = ['profile', 'bookings', session ? (
+  const settings = ['Profile', 'bookings', session ? (
             <>
             <Button onClick={() => signOut()} variant="outlined" sx={{ my: 1, mx: 1.5 }}>
               Logout
@@ -71,7 +72,7 @@ const ResponsiveAppBar = () => {
       <Container sx={{background: '#121212'}} maxWidth="lg">
         <Toolbar disableGutters>
           <Container component="div" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} >
-            {/* <Image src={fineLogo} width={150} height={30} layout="fixed" onClick={handlePicClick} /> */}
+            <Image src={fineLogo} width={150} height={30} layout="fixed" onClick={handlePicClick} />
           <Typography
             variant="h6"
             noWrap
@@ -129,7 +130,7 @@ const ResponsiveAppBar = () => {
           </Box>
 
           <Container component="div" sx={{ display: { xs: 'flex', md: 'none' }, mr: 1  }} >
-            {/* <Image src={fineLogo} width={150} height={30} layout="fixed" onClick={handlePicClick} /> */}
+            <Image src={fineLogo} width={150} height={30} layout="fixed" onClick={handlePicClick} />
           </Container>
       
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
