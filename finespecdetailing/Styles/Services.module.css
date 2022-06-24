@@ -1,8 +1,11 @@
 @media screen and (min-width: 768px) {
     .background {
-        background: none;
+        background: url(/soap.png);
+        background-position: center;
+        background-size: cover;
+        margin-top: 40px;
     }
-    .firstContainer {
+    /* .firstContainer {
         background-image: url(/porche.png);
         background-position: bottom;
         background-attachment: fixed;
@@ -17,6 +20,10 @@
         background-repeat: no-repeat;
         background-size: contain;
         z-index: 0;
+    } */
+    .Grid {
+        align-items: center;
+        height: 80vh;
     }
 }
 
