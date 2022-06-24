@@ -9,9 +9,10 @@ export default function Index() {
     <>
         <Container
           disableGutters
-          maxWidth="lg"
+          maxWidth="false"
           component="main"
-          sx={{ pt: 8, pb: 6, width: "100%", height: "100vh", background: 'url(/showroom.png)', backgroundSize: 'cover'}}
+          className={styles.Container}
+          sx={{ pt: 8, pb: 6, width: "100%", height: "100vh", background: 'url(/porche3.png)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}
         >
           <div
             style={{
