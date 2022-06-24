@@ -1,17 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Cinzel&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Cinzel&display=swap");
 
 .Font {
-  font-family: 'Cinzel', serif;
+  font-family: "Cinzel", serif;
 }
+@media screen and (min-width: 768px) {
+  .Container {
+    width: 100%;
+    height: 100vh;
+    background: url(/showroom.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
 
 @media screen and (max-width: 768px) {
   .video {
-      display: none;
+    display: none;
   }
   .Container {
+    width: 100vw;
+    height: 100vh;
+    background-position: bottom;
+    background: url(/porche3.png);
     background-size: cover;
-    background-position: center;
-    background-position-x: -300px;
   }
 }
-    
+
