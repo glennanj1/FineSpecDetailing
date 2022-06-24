@@ -127,173 +127,173 @@ export default function Resources() {
 
   return (
     <>
-    <div className={styles.background}>
-      <GlobalStyles
-        styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}
-      />
-      <CssBaseline />
-      <Container
-      maxWidth="lg"
-      component="main"
-      sx={{ background: "transparent", marginTop: '30px'}}
-      className={styles.firstContainer}
-    >
-      <Grid container spacing={5} alignItems="flex-end">
-        {tiers.map((tier) => (
-          // Enterprise card is full width at sm breakpoint
-          <Grid
-            item
-            key={tier.title}
-            xs={12}
-            sm={tier.title === "Full Detail" ? 12 : 6}
-            md={4}
-          >
-            <Card sx={{ background: "#000000a1" }}>
-              <CardHeader
-                title={tier.title}
-                subheader={tier.subheader}
-                titleTypographyProps={{ align: "center" }}
-                action={tier.title === "Full Detail" ? <StarIcon /> : null}
-                subheaderTypographyProps={{
-                  align: "center",
-                }}
-                sx={{
-                  backgroundColor: (theme) =>
-                    theme.palette.mode === "light"
-                      ? theme.palette.grey[200]
-                      : theme.palette.grey[700],
-                }}
-              />
-              <CardContent>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "baseline",
-                    mb: 2,
+      <div className={styles.background}>
+        <GlobalStyles
+          styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}
+        />
+        <CssBaseline />
+        <Container
+        maxWidth="lg"
+        component="main"
+        sx={{ background: "transparent", marginTop: '30px'}}
+        className={styles.firstContainer}
+      >
+        <Grid container spacing={5} alignItems="flex-end" className={styles.Grid}>
+          {tiers.map((tier) => (
+            // Enterprise card is full width at sm breakpoint
+            <Grid
+              item
+              key={tier.title}
+              xs={12}
+              sm={tier.title === "Full Detail" ? 12 : 6}
+              md={4}
+            >
+              <Card sx={{ background: "#000000a1" }}>
+                <CardHeader
+                  title={tier.title}
+                  subheader={tier.subheader}
+                  titleTypographyProps={{ align: "center" }}
+                  action={tier.title === "Full Detail" ? <StarIcon /> : null}
+                  subheaderTypographyProps={{
+                    align: "center",
                   }}
-                >
-                  <Typography variant="h6" color="text.secondary" sx={{paddingRight: '10px'}}>
-                    Starting At
-                  </Typography>          
-                  <Typography
-                    component="h2"
-                    variant="h3"
-                    color="text.primary"
-                  >
-                    ${tier.price}
-                  </Typography>
-                  {/* <Typography variant="h6" color="text.secondary">
-                    .99
-                  </Typography> */}
-                </Box>
-                <ul>
-                  {tier.description.map((line) => (
-                    <Typography
-                      component="li"
-                      variant="subtitle1"
-                      align="center"
-                      key={line}
-                    >
-                      {line}
-                    </Typography>
-                  ))}
-                </ul>
-              </CardContent>
-              <CardActions>
-                <Button
-                  onClick={handleClick}
-                  fullWidth
-                  variant={tier.buttonVariant}
-                >
-                  {tier.buttonText}
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-      </Container>
-      <Container
-      maxWidth="lg"
-      component="main"
-      sx={{ background: "transparent", marginTop: '100px' }}
-      className={styles.secondContainer}
-    >
-      <Grid container spacing={5} alignItems="flex-end">
-        {tier2.map((tier) => (
-          // Enterprise card is full width at sm breakpoint
-          <Grid
-            item
-            key={tier.title}
-            xs={12}
-            sm={tier.title === "Full Detail" ? 12 : 6}
-            md={4}
-          >
-            <Card sx={{ background: "#000000a1" }}>
-              <CardHeader
-                title={tier.title}
-                subheader={tier.subheader}
-                titleTypographyProps={{ align: "center" }}
-                action={tier.title === "Pro" ? <StarIcon /> : null}
-                subheaderTypographyProps={{
-                  align: "center",
-                }}
-                sx={{
-                  backgroundColor: (theme) =>
-                    theme.palette.mode === "light"
-                      ? theme.palette.grey[200]
-                      : theme.palette.grey[700],
-                }}
-              />
-              <CardContent>
-                <Box
                   sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "baseline",
-                    mb: 2,
+                    backgroundColor: (theme) =>
+                      theme.palette.mode === "light"
+                        ? theme.palette.grey[200]
+                        : theme.palette.grey[700],
                   }}
-                >
-                  <Typography
-                    component="h2"
-                    variant="h3"
-                    color="text.primary"
+                />
+                <CardContent>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "baseline",
+                      mb: 2,
+                    }}
                   >
-                    ${tier.price}
-                  </Typography>
-                  <Typography variant="h6" color="text.secondary">
-                    .99
-                  </Typography>
-                </Box>
-                <ul>
-                  {tier.description.map((line) => (
+                    <Typography variant="h6" color="text.secondary" sx={{paddingRight: '10px'}}>
+                      Starting At
+                    </Typography>          
                     <Typography
-                      component="li"
-                      variant="subtitle1"
-                      align="center"
-                      key={line}
+                      component="h2"
+                      variant="h3"
+                      color="text.primary"
                     >
-                      {line}
+                      ${tier.price}
                     </Typography>
-                  ))}
-                </ul>
-              </CardContent>
-              <CardActions>
-                <Button
-                  onClick={handleClick}
-                  fullWidth
-                  variant={tier.buttonVariant}
-                >
-                  {tier.buttonText}
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-      </Container>
-    </div>
+                    {/* <Typography variant="h6" color="text.secondary">
+                      .99
+                    </Typography> */}
+                  </Box>
+                  <ul>
+                    {tier.description.map((line) => (
+                      <Typography
+                        component="li"
+                        variant="subtitle1"
+                        align="center"
+                        key={line}
+                      >
+                        {line}
+                      </Typography>
+                    ))}
+                  </ul>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    onClick={handleClick}
+                    fullWidth
+                    variant={tier.buttonVariant}
+                  >
+                    {tier.buttonText}
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+        </Container>
+        <Container
+        maxWidth="lg"
+        component="main"
+        sx={{ background: "transparent", marginTop: '100px' }}
+        className={styles.secondContainer}
+      >
+        <Grid container spacing={5} alignItems="flex-end" className={styles.Grid}>
+          {tier2.map((tier) => (
+            // Enterprise card is full width at sm breakpoint
+            <Grid
+              item
+              key={tier.title}
+              xs={12}
+              sm={tier.title === "Full Detail" ? 12 : 6}
+              md={4}
+            >
+              <Card sx={{ background: "#000000a1" }}>
+                <CardHeader
+                  title={tier.title}
+                  subheader={tier.subheader}
+                  titleTypographyProps={{ align: "center" }}
+                  action={tier.title === "Pro" ? <StarIcon /> : null}
+                  subheaderTypographyProps={{
+                    align: "center",
+                  }}
+                  sx={{
+                    backgroundColor: (theme) =>
+                      theme.palette.mode === "light"
+                        ? theme.palette.grey[200]
+                        : theme.palette.grey[700],
+                  }}
+                />
+                <CardContent>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "baseline",
+                      mb: 2,
+                    }}
+                  >
+                    <Typography
+                      component="h2"
+                      variant="h3"
+                      color="text.primary"
+                    >
+                      ${tier.price}
+                    </Typography>
+                    <Typography variant="h6" color="text.secondary">
+                      .99
+                    </Typography>
+                  </Box>
+                  <ul>
+                    {tier.description.map((line) => (
+                      <Typography
+                        component="li"
+                        variant="subtitle1"
+                        align="center"
+                        key={line}
+                      >
+                        {line}
+                      </Typography>
+                    ))}
+                  </ul>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    onClick={handleClick}
+                    fullWidth
+                    variant={tier.buttonVariant}
+                  >
+                    {tier.buttonText}
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+        </Container>
+      </div>
     </>
   )
 }
