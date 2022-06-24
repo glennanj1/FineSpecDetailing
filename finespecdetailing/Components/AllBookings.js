@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSession, getSession } from "next-auth/react";
 import DataGrid from "./BookingTable";
 import Container from "@mui/material/Container";
+import Button from '@mui/material/Button'
 export default function AllBookings() {
   const { data: session, status } = useSession();
   const [bookings, setBookings] = useState([]);
@@ -58,7 +59,9 @@ export default function AllBookings() {
             ) : (
               <>
                 <h2>Currently No Bookings At this Time!</h2>{" "}
-                <button>Book Now?</button>
+                <Button variant="contained" color="primary" href="/Book">
+                  Book Now
+                </Button>
               </>
             )}
           </>
