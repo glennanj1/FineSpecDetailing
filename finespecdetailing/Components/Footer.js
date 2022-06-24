@@ -76,7 +76,7 @@ export default function Footer() {
         <Grid container spacing={4} justifyContent="space-evenly" >
         
             <Grid item xs={6} sm={3} key={'title'} className={styles.Grid}>
-              <IconButton sx={{display: 'flex', justifyContent: 'center'}}>
+              <IconButton href='' sx={{display: 'flex', justifyContent: 'center'}}>
                 <FacebookIcon />
               </IconButton>
         
