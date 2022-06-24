@@ -3,6 +3,9 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
+import FacebookIcon from '@mui/icons-material/Facebook';
+// import InstagramIcon from '@material-ui/icons/Instagram';
+// import MarkunreadMailboxIcon from '@material-ui/icons/MarkunreadMailbox';
 
 function Copyright(props) {
     return (
@@ -41,17 +44,15 @@ const footers = [
 export default function Footer() {
   return (
    <>
-       {/* Footer */}
       <Container
         maxWidth="md"
         component="footer"
         sx={{
-          borderTop: (theme) => `1px solid ${theme.palette.divider}`,
-          mt: 8,
-          py: [3, 6],
+          mt: 2,
+          py: [1, 1],
         }}
       >
-        <Grid container spacing={4} justifyContent="space-evenly">
+        {/* <Grid container spacing={4} justifyContent="space-evenly">
           {footers.map((footer) => (
             <Grid item xs={6} sm={3} key={footer.title}>
               <Typography variant="h6" color="text.primary" gutterBottom>
@@ -68,10 +69,29 @@ export default function Footer() {
               </ul>
             </Grid>
           ))}
+        </Grid> */}
+        <Grid container spacing={4} justifyContent="space-evenly">
+        
+            <Grid item xs={6} sm={3} key={'title'}>
+              <Typography sx={{display: 'flex', justifyContent: 'center'}}  variant="h6" color="text.primary" gutterBottom>
+                <FacebookIcon />
+              </Typography>
+            </Grid>
+            <Grid item xs={6} sm={3} key={'title'}>
+              <Typography sx={{display: 'flex', justifyContent: 'center'}} variant="h6" color="text.primary" gutterBottom>
+          
+              </Typography>
+            </Grid>
+            <Grid item xs={6} sm={3} key={'title'}>
+              <Typography sx={{display: 'flex', justifyContent: 'center'}} variant="h6" color="text.primary" gutterBottom>
+
+              </Typography>
+            </Grid>
+     
+        
         </Grid>
         <Copyright sx={{ mt: 5 }} />
       </Container>
-      {/* End footer */}
    </>
   )
 }
