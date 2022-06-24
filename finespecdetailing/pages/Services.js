@@ -69,7 +69,7 @@ const tiers = [
 const tier2 =[
   {
     title: "Maintenance Wash",
-    price: "260",
+    price: "75",
     description: [
       "Foam Bath",
       "2 Bucket Wash",
@@ -153,7 +153,7 @@ export default function Resources() {
                 title={tier.title}
                 subheader={tier.subheader}
                 titleTypographyProps={{ align: "center" }}
-                action={tier.title === "Pro" ? <StarIcon /> : null}
+                action={tier.title === "Full Detail" ? <StarIcon /> : null}
                 subheaderTypographyProps={{
                   align: "center",
                 }}
@@ -173,6 +173,9 @@ export default function Resources() {
                     mb: 2,
                   }}
                 >
+                  <Typography variant="h6" color="text.secondary" sx={{paddingRight: '10px'}}>
+                    Starting At
+                  </Typography>          
                   <Typography
                     component="h2"
                     variant="h3"
@@ -180,9 +183,9 @@ export default function Resources() {
                   >
                     ${tier.price}
                   </Typography>
-                  <Typography variant="h6" color="text.secondary">
+                  {/* <Typography variant="h6" color="text.secondary">
                     .99
-                  </Typography>
+                  </Typography> */}
                 </Box>
                 <ul>
                   {tier.description.map((line) => (
