@@ -11,7 +11,9 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import CssBaseline from "@mui/material/CssBaseline";
-import styles from "../Styles/Services.module.css"
+import styles from "../Styles/Services.module.css";
+import { useRouter } from 'next/router';
+
 
 const tiers = [
   {
@@ -26,12 +28,11 @@ const tiers = [
       "Interior Vacuum",
       "Interior Wipedown",
     ],
-    buttonText: "Calendar",
+    buttonText: "Book Now",
     buttonVariant: "outlined",
   },
   {
     title: "Full Detail",
-    subheader: "Foam Wash",
     price: "300",
     description: [
       "Foam Bath",
@@ -60,7 +61,7 @@ const tiers = [
       "Clean & Leather Conditioned Seats & Trim (IF APPLICABLE)",
       "Steam Clean all Interior Carpets & Floor Mats",
     ],
-    buttonText: "Contact us",
+    buttonText: "Book Now",
     buttonVariant: "outlined",
   },
 ];
@@ -79,12 +80,11 @@ const tier2 =[
       "Interior Vacuum",
       "Interior Wipedown",
     ],
-    buttonText: "Calendar",
+    buttonText: "Book Now",
     buttonVariant: "outlined",
   },
   {
     title: "Full Exterior",
-    subheader: "Foam Wash",
     price: "150",
     description: [
       "Foam Bath",
@@ -106,13 +106,16 @@ const tier2 =[
       "Trim Conditioner $50",
       "Odor Eliminator $50",
     ],
-    buttonText: "Contact us",
+    buttonText: "Book Now",
     buttonVariant: "outlined",
   },
 ]
 
 
 export default function Resources() {
+
+  const router = useRouter()
+
 
   let handleClick = (e) => {
     e.preventDefault();
