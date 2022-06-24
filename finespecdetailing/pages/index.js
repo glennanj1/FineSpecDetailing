@@ -12,7 +12,7 @@ export default function Index() {
           maxWidth="false"
           component="main"
           className={styles.Container}
-          sx={{ pt: 8, pb: 6, width: "100%", height: "100vh", background: 'url(/porche3.png)', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}
+          sx={{ pt: 8, pb: 6}}
         >
           <div
             style={{
@@ -51,7 +51,7 @@ export default function Index() {
           </div>
         </Container>
 
-      {/* <div className={styles.video}>
+      <div className={styles.video}>
         <video
           autoPlay
           playsInline
@@ -59,12 +59,12 @@ export default function Index() {
           muted
           loop
           style={{
-            width: "100vw",
+            width: "100%",
             height: "100vh",
             top: "0",
             // position: "absolute",
             zIndex: "-1",
-            borderRadius: "50%",
+      
           }}
         >
           <source
@@ -72,7 +72,7 @@ export default function Index() {
             type="video/mp4"
           />
         </video>
-      </div> */}
+      </div>
     </>
   );
 }
