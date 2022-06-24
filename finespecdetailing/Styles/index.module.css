@@ -8,5 +8,10 @@
   .video {
       display: none;
   }
+  .Container {
+    background-size: cover;
+    background-position: center;
+    background-position-x: -300px;
+  }
 }
     
