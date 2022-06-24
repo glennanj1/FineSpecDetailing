@@ -4,8 +4,11 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import FacebookIcon from '@mui/icons-material/Facebook';
-// import InstagramIcon from '@material-ui/icons/Instagram';
-// import MarkunreadMailboxIcon from '@material-ui/icons/MarkunreadMailbox';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
+import IconButton from '@mui/material/IconButton';
+import styles from '../Styles/Footer.module.css'
 
 function Copyright(props) {
     return (
@@ -70,22 +73,33 @@ export default function Footer() {
             </Grid>
           ))}
         </Grid> */}
-        <Grid container spacing={4} justifyContent="space-evenly">
+        <Grid container spacing={4} justifyContent="space-evenly" >
         
-            <Grid item xs={6} sm={3} key={'title'}>
-              <Typography sx={{display: 'flex', justifyContent: 'center'}}  variant="h6" color="text.primary" gutterBottom>
+            <Grid item xs={6} sm={3} key={'title'} className={styles.Grid}>
+              <IconButton sx={{display: 'flex', justifyContent: 'center'}}>
                 <FacebookIcon />
-              </Typography>
+              </IconButton>
+              <h3>FaceBook</h3>
             </Grid>
-            <Grid item xs={6} sm={3} key={'title'}>
-              <Typography sx={{display: 'flex', justifyContent: 'center'}} variant="h6" color="text.primary" gutterBottom>
-          
-              </Typography>
+            <Grid item xs={6} sm={3} key={'title'} className={styles.Grid}>
+              <IconButton sx={{display: 'flex', justifyContent: 'center'}}>
+                  <InstagramIcon />
+              </IconButton>
+                <h3>Instagram</h3>
             </Grid>
-            <Grid item xs={6} sm={3} key={'title'}>
-              <Typography sx={{display: 'flex', justifyContent: 'center'}} variant="h6" color="text.primary" gutterBottom>
-
-              </Typography>
+            <Grid item xs={6} sm={3} key={'title'} className={styles.Grid}>
+              <IconButton sx={{display: 'flex', justifyContent: 'center'}}>
+                <EmailIcon />
+              </IconButton>
+              <h3>Email</h3>
+            </Grid>
+     
+        
+            <Grid item xs={6} sm={3} key={'title'} className={styles.Grid}>
+              <IconButton sx={{display: 'flex', justifyContent: 'center'}}>
+                <PhoneIphoneIcon />
+              </IconButton>
+              <h3>Call</h3>
             </Grid>
      
         
