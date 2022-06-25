@@ -76,19 +76,19 @@ export default function Footer() {
         <Grid container spacing={4} justifyContent="space-evenly" >
         
             <Grid item xs={6} sm={3} key={'title'} className={styles.Grid}>
-              <IconButton href='' sx={{display: 'flex', justifyContent: 'center'}}>
+              <IconButton href='https://m.facebook.com/finespecdetailing' sx={{display: 'flex', justifyContent: 'center'}}>
                 <FacebookIcon />
               </IconButton>
         
             </Grid>
             <Grid item xs={6} sm={3} key={'title'} className={styles.Grid}>
-              <IconButton sx={{display: 'flex', justifyContent: 'center'}}>
+              <IconButton href='https://www.instagram.com/fine.spec/' sx={{display: 'flex', justifyContent: 'center'}}>
                   <InstagramIcon />
               </IconButton>
               
             </Grid>
             <Grid item xs={6} sm={3} key={'title'} className={styles.Grid}>
-              <IconButton sx={{display: 'flex', justifyContent: 'center'}}>
+              <IconButton href="mailto:finespecdetailing@gmail.com" sx={{display: 'flex', justifyContent: 'center'}}>
                 <EmailIcon />
               </IconButton>
               <h3>Email</h3>
@@ -96,7 +96,7 @@ export default function Footer() {
      
         
             <Grid item xs={6} sm={3} key={'title'} className={styles.Grid}>
-              <IconButton sx={{display: 'flex', justifyContent: 'center'}}>
+              <IconButton href="tel:484-655-9375" sx={{display: 'flex', justifyContent: 'center'}}>
                 <PhoneIphoneIcon />
               </IconButton>
               <h3>Call</h3>
