@@ -68,7 +68,7 @@ export default function Index() {
           }}
         >
           <source
-            src="/drippy.mp4"
+            src="https://finespecdetailing.b-cdn.net/drippy.mp4"
             type="video/mp4"
           />
         </video>
