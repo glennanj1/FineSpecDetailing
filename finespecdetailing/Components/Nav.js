@@ -33,18 +33,7 @@ const ResponsiveAppBar = () => {
     console.log(session)
   }) 
   const pages = ['Services', 'Contact'];
-  const settings = ['Profile', 'bookings', session ? (
-            <>
-            <Button onClick={() => signOut()} variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-              Logout
-            </Button>
-            </>
-          ) : 
-          (
-            <Button onClick={() => signIn()} variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-              Login
-            </Button>
-          )];
+  const settings = ['Profile', 'bookings']
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -148,7 +137,7 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={session ? session.user.email : null} src="/static/images/avatar/2.jpg" />
+                <Avatar alt={session ? session.user.email : null} src="" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -169,13 +158,21 @@ const ResponsiveAppBar = () => {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center"><Link href={`/${setting}`} underline="none" sx={{textTransform: 'capitalize'}}>{setting}</Link></Typography>
+                  <Link href={`/${setting}`} underline="none" sx={{textTransform: 'capitalize'}}>{setting}</Link>
                 </MenuItem>
               ))}
+              {session ? (
+                              <Button onClick={() => signOut()} variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+                                Logout
+                              </Button>
+                            ) : 
+                            (
+                              <Button onClick={() => signIn()} variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+                                Login
+                              </Button>
+                  )}
             </Menu>
           </Box>
-
-          
         </Toolbar>
       </Container>
     </AppBar>
