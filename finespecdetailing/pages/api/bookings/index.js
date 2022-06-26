@@ -30,7 +30,6 @@ export default async function handler(req, res) {
       break
     case 'POST':
       if (session) {
-        console.log(req.body.car);
         try {
           req.body.car.map((c) => {
             //Model.findByIdAndUpdate(id, { $set: { name: 'SOME_VALUE' }}, { upsert: true  }, callback)

@@ -53,7 +53,6 @@ export default function ComboBox() {
           fetch("/api/cars?year=" + year + "&make=" + make)
             .then((r) => r.json())
             .then((d) => {
-              console.log(d);
               setLoading(false);
               if (d.length > 0) {
                 setCar(d);

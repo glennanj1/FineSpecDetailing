@@ -122,7 +122,6 @@ export default function Resources() {
     e.target.childNodes[0].data === "Book Now"
       ? router.push("/Book")
       : console.log("click");
-    console.log(e.target.childNodes[0].data);
   };
 
   return (

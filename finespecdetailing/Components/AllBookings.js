@@ -22,7 +22,6 @@ export default function AllBookings() {
         setBookings(data.data);
       })
       .catch((e) => {
-        console.log(e);
         console.debug(e);
         setLoading(false);
       });

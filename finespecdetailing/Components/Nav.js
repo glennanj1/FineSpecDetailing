@@ -30,7 +30,6 @@ const ResponsiveAppBar = () => {
 
 
   React.useEffect(() => {
-    console.log(session)
   }) 
   const pages = ['Services', 'Contact'];
   const settings = ['Profile', 'bookings']
