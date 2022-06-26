@@ -118,7 +118,7 @@ const ResponsiveAppBar = () => {
           </Box>
 
           <Container component="div" sx={{ display: { xs: 'flex', md: 'none' }, mr: 1  }} >
-            <Image src={fineLogo} width={150} height={30} layout="fixed" onClick={handlePicClick} />
+            <Image src={fineLogo} width={150} height={30} layout="fixed" onClick={handlePicClick}  />
           </Container>
       
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -136,7 +136,7 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={session ? session.user.email : null} src="" />
+                <Avatar alt={session ? session.user.email : null} src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu

@@ -53,8 +53,6 @@ export default function AllBookings() {
             <h1>Hey {session.user.email}</h1>
             {!loading && bookings.length >= 1 ? (
             <DataGrid />
-             
-            
             ) : (
               <>
                 <h2>Currently No Bookings At this Time!</h2>{" "}
