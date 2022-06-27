@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useSession, getSession } from "next-auth/react"
 import { useRouter } from 'next/router'
+import styles from '../Styles/Autocomplete.module.css'
 
 
 export default function ComboBox() {
@@ -184,7 +185,7 @@ export default function ComboBox() {
 
   if (status === "unauthenticated") {
     return (
-      <Container component="main" maxWidth="md" style={{height: '30vh', display: 'flex', justifyContent: 'center', alignText: 'center', alignContent: 'center'}}>
+      <Container component="main" maxWidth="md" style={{height: '80vh', display: 'flex', justifyContent: 'center', alignText: 'center', alignContent: 'center'}} className={styles.Font}>
         <h1>Please Login to Continue</h1>
       </Container>
     )
