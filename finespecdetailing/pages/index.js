@@ -40,12 +40,13 @@ export default function Index() {
               align="center"
               color="black"
               component="p"
+              className={styles.Font}
               sx={{fontWeight: 500, textShadow: "1px 1px 1px white"}}
             >
-              Serving the Philadelphia Suburban region
+              Serving the Philadelphia Suburban Region
             </Typography>
           </div>
-            <Button variant="contained" color="primary" href="/Book" sx={{ width: "220px", height: '100px', fontSize: '30px' }}>
+            <Button variant="contained" color="primary" href="/Book" className={styles.Font} sx={{ width: "220px", height: '100px', fontSize: '30px' }}>
               Book Now
             </Button>
           </div>
