@@ -6,16 +6,16 @@ export default function Contact() {
   return (
   <>
     <Container component="main" maxWidth="md" className={styles.Container}>
-        <h1>
+        <h1 className={styles.Font}>
             Contact Us
         </h1>
-        <h1>
+        <h1 className={styles.Font}>
             Location
         </h1>
-        <h1>
+        <h1 className={styles.Font}>
             Privacy policy
         </h1>
-        <h1>
+        <h1 className={styles.Font}>
             Terms of use
         </h1>
     </Container>
