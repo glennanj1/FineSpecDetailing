@@ -14,10 +14,11 @@ import MenuItem from '@mui/material/MenuItem';
 import Image from 'next/image'
 // import AdbIcon from '@mui/icons-material/Adb';
 import Link from '@mui/material/Link';
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from 'next/router';
+import styles from '../Styles/Nav.module.css';
 
-import fineLogo from '../public/fineLogo2.png'
+import fineLogo from '../public/fineLogo2.png';
 
 // import Image from 'next/image'
 // import { Router } from 'next/router';
@@ -69,12 +70,11 @@ const ResponsiveAppBar = () => {
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex', paddingLeft: '30px'},
-              fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
-            }}
+            }}          
           >
             
           </Typography>
@@ -111,7 +111,7 @@ const ResponsiveAppBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center"><Link href={`/${page}`} underline="none">{page}</Link></Typography>
+                  <Typography textAlign="center" className={styles.Font}><Link href={`/${page}`} underline="none">{page}</Link></Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -127,8 +127,9 @@ const ResponsiveAppBar = () => {
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
+                className={styles.Font}
               >
-                <Link href={`/${page}`} underline="none">{page}</Link>
+                <Link href={`/${page}`} underline="none" >{page}</Link>
               </Button>
             ))}
           </Box>
@@ -157,16 +158,16 @@ const ResponsiveAppBar = () => {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Link href={`/${setting}`} underline="none" sx={{textTransform: 'capitalize'}}>{setting}</Link>
+                  <Link href={`/${setting}`} underline="none" sx={{textTransform: 'capitalize'}} className={styles.Font}>{setting}</Link>
                 </MenuItem>
               ))}
               {session ? (
-                              <Button onClick={() => signOut()} variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+                              <Button onClick={() => signOut()} variant="outlined" sx={{ my: 1, mx: 1.5 }} className={styles.Font}>
                                 Logout
                               </Button>
                             ) : 
                             (
-                              <Button onClick={() => signIn()} variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+                              <Button onClick={() => signIn()} variant="outlined" sx={{ my: 1, mx: 1.5 }} className={styles.Font}>
                                 Login
                               </Button>
                   )}
