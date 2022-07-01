@@ -146,10 +146,12 @@ export default function Resources() {
               xs={12}
               sm={tier.title === "Full Detail" ? 12 : 6}
               md={4}
+              
             >
-              <Card sx={{ background: "#000000a1" }}>
+              <Card sx={{ background: "#000000a1" }} > 
                 <CardHeader
                   title={tier.title}
+    
                   subheader={tier.subheader}
                   titleTypographyProps={{ align: "center" }}
                   action={tier.title === "Full Detail" ? <StarIcon /> : null}
@@ -172,13 +174,14 @@ export default function Resources() {
                       mb: 2,
                     }}
                   >
-                    <Typography variant="h6" color="text.secondary" sx={{paddingRight: '10px'}}>
+                    <Typography variant="h6" color="text.secondary" sx={{paddingRight: '10px'}} className={styles.Font}>
                       Starting At
                     </Typography>          
                     <Typography
                       component="h2"
                       variant="h3"
                       color="text.primary"
+                      className={styles.Font}
                     >
                       ${tier.price}
                     </Typography>
@@ -193,6 +196,7 @@ export default function Resources() {
                         variant="subtitle1"
                         align="center"
                         key={line}
+                        className={styles.Font}
                       >
                         {line}
                       </Typography>
@@ -204,6 +208,7 @@ export default function Resources() {
                     onClick={handleClick}
                     fullWidth
                     variant={tier.buttonVariant}
+                    className={styles.Font}
                   >
                     {tier.buttonText}
                   </Button>
@@ -258,10 +263,11 @@ export default function Resources() {
                       component="h2"
                       variant="h3"
                       color="text.primary"
+                      className={styles.Font}
                     >
                       ${tier.price}
                     </Typography>
-                    <Typography variant="h6" color="text.secondary">
+                    <Typography variant="h6" color="text.secondary" className={styles.Font}>
                       .99
                     </Typography>
                   </Box>
@@ -272,6 +278,7 @@ export default function Resources() {
                         variant="subtitle1"
                         align="center"
                         key={line}
+                        className={styles.Font}
                       >
                         {line}
                       </Typography>
@@ -283,6 +290,7 @@ export default function Resources() {
                     onClick={handleClick}
                     fullWidth
                     variant={tier.buttonVariant}
+                    className={styles.Font}
                   >
                     {tier.buttonText}
                   </Button>
