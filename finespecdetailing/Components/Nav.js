@@ -33,7 +33,7 @@ const ResponsiveAppBar = () => {
   React.useEffect(() => {
   }) 
   const pages = ['Services', 'Contact'];
-  const settings = ['Profile', 'bookings']
+  const settings = session ? ['Profile', 'bookings'] : []
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
