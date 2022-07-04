@@ -9,7 +9,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import IconButton from '@mui/material/IconButton';
 import styles from '../Styles/Footer.module.css'
-
+import TikTok from './TikTok'
 function Copyright(props) {
     return (
       <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -57,7 +57,7 @@ export default function Footer() {
       >
         {/* <Grid container spacing={4} justifyContent="space-evenly">
           {footers.map((footer) => (
-            <Grid item xs={6} sm={3} key={footer.title}>
+            <Grid item xs={1} sm={2} key={footer.title}>
               <Typography variant="h6" color="text.primary" gutterBottom>
                 {footer.title}
               </Typography>
@@ -74,33 +74,40 @@ export default function Footer() {
           ))}
         </Grid> */}
         <Grid container spacing={4} justifyContent="space-evenly" >
+
+            <Grid item xs={1} sm={2} key={'title'} className={styles.Grid}>
+                  <IconButton href="https://www.tiktok.com/@fine.spec" sx={{display: 'flex', justifyContent: 'center', width: '40px', height: '40px'}}>
+                    <TikTok color="white" />
+                  </IconButton>
+            </Grid>
         
-            <Grid item xs={6} sm={3} key={'title'} className={styles.Grid}>
+            <Grid item xs={1} sm={2} key={'title'} className={styles.Grid}>
               <IconButton href='https://m.facebook.com/finespecdetailing' sx={{display: 'flex', justifyContent: 'center'}}>
                 <FacebookIcon />
               </IconButton>
         
             </Grid>
-            <Grid item xs={6} sm={3} key={'title'} className={styles.Grid}>
+
+            <Grid item xs={1} sm={2} key={'title'} className={styles.Grid}>
               <IconButton href='https://www.instagram.com/fine.spec/' sx={{display: 'flex', justifyContent: 'center'}}>
                   <InstagramIcon />
               </IconButton>
               
             </Grid>
-            <Grid item xs={6} sm={3} key={'title'} className={styles.Grid}>
+            <Grid item xs={1} sm={2} key={'title'} className={styles.Grid}>
               <IconButton href="mailto:finespecdetailing@gmail.com" sx={{display: 'flex', justifyContent: 'center'}}>
                 <EmailIcon />
               </IconButton>
-              <h3>Email</h3>
             </Grid>
      
         
-            <Grid item xs={6} sm={3} key={'title'} className={styles.Grid}>
+            <Grid item xs={1} sm={2} key={'title'} className={styles.Grid}>
               <IconButton href="tel:484-655-9375" sx={{display: 'flex', justifyContent: 'center'}}>
                 <PhoneIphoneIcon />
               </IconButton>
-              <h3>Call</h3>
             </Grid>
+        
+         
      
         
         </Grid>
