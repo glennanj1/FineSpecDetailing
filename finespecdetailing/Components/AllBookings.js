@@ -26,8 +26,7 @@ export default function AllBookings() {
         setLoading(false);
       });
       console.log(session);
-      console.log(data);
-  }, [setBookings, setLoading, data]);
+  }, [setBookings, setLoading]);
 
   if (status === "loading") {
     return (
