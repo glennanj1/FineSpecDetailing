@@ -85,6 +85,7 @@ export default function ComboBox() {
   }, [year, make, model, name, email, phone, service, value]);
 
   const handleChange = (event, value, reason) => {
+  
     switch (event.target.id.split("-")[0]) {
       case "year":
         setYear(value);
@@ -234,7 +235,7 @@ export default function ComboBox() {
                   fullWidth
                   disabled={disableMake}
                   id="make"
-                  options={makes}
+                  options={makes.sort((a, b) => (a > b) ? 1 : -1)}
                   value={make}
                   onChange={handleChange}
                   renderInput={(params) => (
@@ -429,16 +430,20 @@ const makes = [
 ];
 const services = [
   {
+    value: "Express Detail",
+    label: "Express Detail",
+  },
+  {
     value: "Full Detail",
     label: "Full Detail",
   },
   {
-    value: "Full Exterior Detail Only",
-    label: "Full Exterior Detail Only",
+    value: "Full Exterior Detail",
+    label: "Full Exterior Detail",
   },
   {
-    value: "Full Interior Detail Only",
-    label: "Full Interior Detail Only",
+    label: "Full Interior Detail",
+    value: "Full Interior Detail",
   },
   {
     value: "Maintenance Wash",
