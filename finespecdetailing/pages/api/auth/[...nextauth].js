@@ -25,6 +25,7 @@ export default NextAuth({
   ],
   theme: {
     colorScheme: "dark",
+    logo: '/fineLogo2.png'
   },
   callbacks: {
     async session({ session, user, account, token }) {
