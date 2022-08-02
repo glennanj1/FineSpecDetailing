@@ -15,7 +15,7 @@ function Copyright(props) {
       <Typography variant="body2" color="text.secondary" align="center" {...props}>
         {'Copyright © '}
         <a href="https://glennan.netlify.app" color="inherit" style={{textDecoration: 'none', color: 'silver'}}>
-          Code Cloud
+          John Glennan
         </a>{' '}
         {new Date().getFullYear()}
         {'.'}
