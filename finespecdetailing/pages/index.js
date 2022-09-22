@@ -3,7 +3,6 @@ import Container from "@mui/material/Container";
 import styles from "../Styles/index.module.css";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-
 export default function Index() {
   return (
     <>
@@ -52,7 +51,7 @@ export default function Index() {
           </div>
         </Container>
 
-      <div className={styles.video}>
+      {/* <div className={styles.video}>
         <video
           autoPlay
           playsInline
@@ -73,7 +72,7 @@ export default function Index() {
             type="video/mp4"
           />
         </video>
-      </div>
+      </div> */}
     </>
   );
 }
