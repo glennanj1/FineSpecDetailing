@@ -13,6 +13,8 @@ import Button from "@mui/material/Button";
 import { useSession, getSession } from "next-auth/react"
 import { useRouter } from 'next/router'
 import styles from '../Styles/Autocomplete.module.css'
+import ActionAlerts from '../Components/Alert.js'
+import { signIn } from "next-auth/react";
 
 
 export default function ComboBox() {
@@ -38,6 +40,7 @@ export default function ComboBox() {
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const [phone, setPhone] = useState(null);
+  const [alert, setAlert] = useState(false);
 
 
   useEffect(() => {
@@ -131,34 +134,35 @@ export default function ComboBox() {
   }
   const handleInputChange = (e, v, r) => {}; 
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      const res = await fetch('/api/bookings/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await fetch('/api/bookings/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        booking: {
+          name: name,
+          email: email,
+          phone: phone,
+          service: service,
+          accepted: false,
+          year: year,
+          make: make,
+          model: model,
+          type: type,
+          appointment: value,
+          Account: session.userId
         },
-        body: JSON.stringify({
-          booking: {
-            name: name,
-            email: email,
-            phone: phone,
-            service: service,
-            accepted: false,
-            year: year,
-            make: make,
-            model: model,
-            type: type,
-            appointment: value,
-            Account: session.userId
-          },
-          car: car,
-        }),
-      });
-      const data = await res.json();
-      console.log(data);
-      if (data.success === true) {
-        alert("Booking Successful");
+        car: car,
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
+    if (data.success === true) {
+      setAlert(true);
+      setTimeout(() => {
         setYear(null);
         setMake(null);
         setModel(null);
@@ -169,11 +173,13 @@ export default function ComboBox() {
         setService(null);
         setService(null);
         setValue(null);
+        setAlert(false);
         router.push(`/booking/${data.data._id}`);
-      } else {
-        alert("Booking Failed Try Again");
-      }
-    };
+      }, 6000);
+    } else {
+      alert("Booking Failed Try Again");
+    }
+  };
     
 
   const handleServiceChange = e => {
@@ -185,9 +191,11 @@ export default function ComboBox() {
   }
 
   if (status === "unauthenticated") {
+    debugger;
+    signIn();
     return (
       <Container component="main" maxWidth="md" style={{height: '80vh', display: 'flex', justifyContent: 'center', alignText: 'center', alignContent: 'center'}} className={styles.Font}>
-        <h1>Please Login to Continue</h1>
+        <h1>Redirecting...</h1>
       </Container>
     )
   }
@@ -195,6 +203,7 @@ export default function ComboBox() {
   return (
     <>
       <Container component="main" maxWidth="xs">
+        {alert ? <ActionAlerts /> : null}
         <Box
           sx={{
             marginTop: 8,

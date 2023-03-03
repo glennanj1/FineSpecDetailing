@@ -3,6 +3,8 @@ import { useSession, getSession } from "next-auth/react";
 import DataGrid from "./BookingTable";
 import Container from "@mui/material/Container";
 import Button from '@mui/material/Button'
+import Progress from '../Components/Progress.js'
+
 export default function AllBookings() {
   const { data: session, status } = useSession();
   const [bookings, setBookings] = useState([]);
@@ -30,8 +32,9 @@ export default function AllBookings() {
 
   if (status === "loading") {
     return (
-      <Container component="main" maxWidth="md">
+      <Container component="main" maxWidth="md" style={{height: '30vh', display: 'flex', justifyContent: 'center', alignText: 'center', alignContent: 'center'}}>
         <h1>Loading ...</h1>
+        <Progress />
       </Container>
     );
   }
@@ -40,6 +43,9 @@ export default function AllBookings() {
       <Container component="main" maxWidth="md" style={{height: '30vh', display: 'flex', justifyContent: 'center', alignText: 'center', alignContent: 'center'}}>
      
         <h1>Please Login to Continue</h1>
+        <Button onClick={() => signIn()} variant="outlined" sx={{ my: 1, mx: 1.5 }} className={styles.Font}>
+          Login
+        </Button>
     
       </Container>
     );
@@ -55,11 +61,14 @@ export default function AllBookings() {
             {!loading && bookings.length >= 1 ? (
             <DataGrid />
             ) : (
+              
               <>
-                <h2>Currently No Bookings At this Time!</h2>{" "}
-                <Button variant="contained" color="primary" href="/Book">
-                  Book Now
-                </Button>
+              <Container component="main" maxWidth="md" style={{height: '50vh'}}>
+                  <h2>Currently No Bookings At this Time!</h2>{" "}
+                  <Button variant="contained" color="primary" href="/Book">
+                    Book Now
+                  </Button>
+                </Container>
               </>
             )}
           </>

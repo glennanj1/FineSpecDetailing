@@ -51,7 +51,7 @@ export default function Index() {
           </div>
         </Container>
 
-      {/* <div className={styles.video}>
+      <div className={styles.video}>
         <video
           autoPlay
           playsInline
@@ -68,11 +68,12 @@ export default function Index() {
           }}
         >
           <source
-            src="https://finespecdetailing.b-cdn.net/drippy.mp4"
+            src="/drippy.mp4"
+            //src="https://finespecdetailing.b-cdn.net/drippy.mp4"
             type="video/mp4"
           />
         </video>
-      </div> */}
+      </div>
     </>
   );
 }
