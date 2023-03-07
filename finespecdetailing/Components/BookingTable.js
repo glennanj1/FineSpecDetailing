@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-
+import { Container } from '@mui/material';
 
 const columns = [
   { field: '_id', headerName: 'id', width: 90 },
@@ -109,7 +109,8 @@ export default function DataGridDemo() {
   return (
     <>
       {loading ? <div>Loading...</div> :
-      <div style={{ height: '80vh', width: '100%', paddingTop: '30px'}}>
+      <div style={{height: '70vh', width: '100%', paddingTop: '30px'}}>
+        <Container component="main" maxWidth="xl" style={{height: '50vh'}}>
         <DataGrid
           rows={bookings}
           columns={columns}
@@ -119,6 +120,7 @@ export default function DataGridDemo() {
           disableSelectionOnClick
           getRowId={(row) => row._id}
         />
+        </Container>
       </div>
       }
     </>
