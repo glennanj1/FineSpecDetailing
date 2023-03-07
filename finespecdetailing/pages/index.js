@@ -45,7 +45,7 @@ export default function Index() {
               Serving the Philadelphia Suburban Region
             </Typography>
           </div>
-            <Button variant="contained" color="primary" href="/Book" className={styles.Font} sx={{ width: "220px", height: '100px', fontSize: '30px' }}>
+            <Button variant="contained" color="primary" href="/book" className={styles.Font} sx={{ width: "220px", height: '100px', fontSize: '30px' }}>
               Book Now
             </Button>
           </div>
