@@ -9,7 +9,7 @@ export default function Bookings() {
     <>
     <Container maxWidth="md">
       <main className={styles.main}>        
-              <AllBookings />
+        <AllBookings />
       </main>
     </Container>
   </>
