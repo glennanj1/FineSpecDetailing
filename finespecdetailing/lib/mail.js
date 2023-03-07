@@ -31,7 +31,7 @@ console.log('success')
 async function mailAdmin (body, subject, appointment) {
 console.log('mailing');
 const transporter = nodemailer.createTransport({
-    host: process.env.ADMIN_EMAIL,
+    host: process.env.host,
     port: 587,
     auth: {
     user: process.env.user, // generated ethereal user
@@ -40,7 +40,7 @@ const transporter = nodemailer.createTransport({
 });
 const mailData = {
     from: process.env.user,
-    to: process.env.user,
+    to: process.env.ADMIN_EMAIL,
     subject: subject,
     text: body,
     attachments: [
