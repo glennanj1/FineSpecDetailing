@@ -41,7 +41,7 @@ export default function Booking() {
     const year = date.getFullYear();
     const hour = date.getHours();
     const minute = date.getMinutes();
-    const time = date.toLocaleString('en-US', { hour: 'numeric', hour12: true })
+    const time = date.toLocaleString('en-US', 'HH:MM', { hour12: true })
 
     debugger
     return(
