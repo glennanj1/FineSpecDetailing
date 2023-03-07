@@ -28,7 +28,9 @@ export default function ComboBox() {
   const [make, setMake] = useState(null);
   const [disableModel, setDisableModel] = useState(true);
   const [model, setModel] = useState(null);
+  const [disableType, setDisableType] = useState(true);
   const [type, setType] = useState(null);
+  const [typeForApi, setTypeForApi] = useState(null);
   const [service, setService] = useState(null);
   //api load
   const [models, setModels] = useState([]);
@@ -38,9 +40,45 @@ export default function ComboBox() {
   const [car, setCar] = useState([]);
 
   const [name, setName] = useState(null);
-  const [email, setEmail] = useState(null);
+  const [email, setEmail] = useState(session?.user?.email);
   const [phone, setPhone] = useState(null);
   const [alert, setAlert] = useState(false);
+
+  const callFetch = () => {
+    setModels([]);
+    fetch("/api/cars?year=" + year + "&make=" + make + "&type=" + typeForApi)
+    .then((r) => r.json())
+    .then((d) => {
+      debugger;
+      setLoading(false);
+      if (d.Results.length > 0) {
+        setCar(d);
+        let a = [];
+        d.Results.map((m) => {
+          debugger;
+          console.log(m);
+          a.push({value: m.Model_ID, label: m.Model_Name})
+          //a.push({value: m.type, label: m.model});
+        });
+        setModels(a);
+      } else {
+        //needs to be a toast
+        debugger;
+        alert("empty list try again");
+        setModels([]);
+        setType(null);
+        setTypeForApi(null);
+        setModel(null);
+        setMake(null);
+        setYear(null);
+      }
+    })
+    .catch((e) => {
+      console.log(e);
+      setLoading(false);
+      // alert(e);
+    });
+  }
 
 
   useEffect(() => {
@@ -48,67 +86,75 @@ export default function ComboBox() {
       setDisableMake(false);
       console.log("disable make");
       if (make !== null) {
-        setDisableModel(false);
-        console.log("disable model");
-        if (models.length > 0) {
-          console.log("models loaded");
-        } else {
-          setLoading(true);
-          fetch("/api/cars?year=" + year + "&make=" + make)
-            .then((r) => r.json())
-            .then((d) => {
-              setLoading(false);
-              if (d.length > 0) {
-                setCar(d);
-                let a = [];
-                d.map((m) => {
-                  a.push({value: m.type, label: m.model});
-                });
-                setModels(a);
-              } else {
-                //needs to be a toast
-                alert("empty list try again");
-                setModels([]);
-                setModel(null);
-                setMake(null);
-                setYear(null);
-              }
-            })
-            .catch((e) => {
-              console.log(e);
-              alert(e);
-            });
+        console.log("disable type");
+        setDisableType(false);
+        if (type !== null) {
+          console.log("disable model");
+          setDisableModel(false);
+          console.log("disable model");
+          if (models.length > 0) {
+            console.log("models loaded");
+          } else {
+            setLoading(true);
+            callFetch();
+          }
         }
       }
-    } else if (year === "") {
-      setDisableMake(true);
-      setDisableModel(true);
+    } 
+    console.log(name, email, phone, service, value, type);
+  }, [year, make, model, name, email, phone, service, value, type]);
+
+  let checkChange = (label, value) => {
+    debugger;
+    if (year !== null && make !== null && type !== null) {
+      switch (label) {
+        case "year":
+          year !== value ? callFetch() : null 
+          break;
+        case "make":
+          make !== value ? callFetch() : null
+          break;
+        case "type": {
+          type !== value.label ? callFetch() : null
+          break
+        }
+        default:
+          console.log('error check change')
+          break;
+      }
     }
-    console.log(name, email, phone, service, value);
-  }, [year, make, model, name, email, phone, service, value]);
+  }
 
   const handleChange = (event, value, reason) => {
   
     switch (event.target.id.split("-")[0]) {
       case "year":
+        checkChange("year", value);
         setYear(value);
         break;
       case "make":
+        checkChange("make", value);
         setMake(value);
         break;
       case "model":
-        setType(value.value)
         setModel(value.label);
         break;
       case "service": {
         setService(value);
         break;
       }
+      case "type": {
+        checkChange("type", value);
+        setType(value.label);
+        setTypeForApi(value.value);
+        break
+      }
       default:
         console.log(reason)
         if (reason === "clear") {
           setType(null);
           setYear(null);
+          setTypeForApi(null);
           setMake(null);
           setModel(null);
           setModels([]);
@@ -144,7 +190,7 @@ export default function ComboBox() {
       body: JSON.stringify({
         booking: {
           name: name,
-          email: email,
+          email: session?.user?.email,
           phone: phone,
           service: service,
           accepted: false,
@@ -155,7 +201,7 @@ export default function ComboBox() {
           appointment: value,
           Account: session.userId
         },
-        car: car,
+        //car: car,
       }),
     });
     const data = await res.json();
@@ -168,6 +214,8 @@ export default function ComboBox() {
         setModel(null);
         setModels([]);
         setName(null);
+        setType(null);
+        setTypeForApi(null);
         setEmail(null);
         setPhone(null);
         setService(null);
@@ -254,6 +302,20 @@ export default function ComboBox() {
               </Grid>
               <Grid item xs={12}>
                 <Autocomplete
+                  disablePortal
+                  fullWidth
+                  disabled={disableType}
+                  id="type"
+                  options={types.sort((a, b) => (a > b) ? -1 : 1)}
+                  value={type}
+                  onChange={handleChange}
+                  renderInput={(params) => (
+                    <TextField {...params} required label="Type" />
+                  )}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Autocomplete
                   required
                   loading={isloading}
                   disablePortal
@@ -283,12 +345,12 @@ export default function ComboBox() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
-                  required
                   autoComplete="email"
                   id="email"
+                  disabled='true'
                   label="Email"
                   defaultValue=""
-                  value={email}
+                  value={session?.user?.email}
                   onChange={handleTextChange}
                 />
               </Grid>
@@ -372,6 +434,9 @@ const years = [
   "2018",
   "2019",
   "2020",
+  "2021",
+  "2022",
+  "2023",
 ];
 const makes = [
   "Buick",
@@ -437,6 +502,21 @@ const makes = [
   "Fisker",
   "Panoz",
 ];
+
+const types = [
+  {
+    value: 'car',
+    label: 'Car',
+  },
+  {
+    value: 'mpv', 
+    label: 'SUV',
+  },
+  {
+    value: 'truck',
+    label: 'Truck', 
+  }
+]
 const services = [
   {
     value: "Express Detail",
