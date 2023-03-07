@@ -57,15 +57,15 @@ export default function AllBookings() {
           <DataGrid />
         ) : (
           <>
-            <h1>Hey {session.user.email}</h1>
-            {!loading && bookings.length >= 1 ? (
-            <DataGrid />
+              <h1>Hey {session.user.email}</h1>
+              {!loading && bookings.length >= 1 ? (
+                <DataGrid />
             ) : (
               
               <>
               <Container component="main" maxWidth="md" style={{height: '50vh'}}>
                   <h2>Currently No Bookings At this Time!</h2>{" "}
-                  <Button variant="contained" color="primary" href="/Book">
+                  <Button variant="contained" color="primary" href="/book">
                     Book Now
                   </Button>
                 </Container>
