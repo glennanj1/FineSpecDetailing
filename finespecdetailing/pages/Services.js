@@ -120,7 +120,7 @@ export default function Resources() {
   let handleClick = (e) => {
     e.preventDefault();
     e.target.childNodes[0].data === "Book Now"
-      ? router.push("/Book")
+      ? router.push("/book")
       : console.log("click");
   };
 
