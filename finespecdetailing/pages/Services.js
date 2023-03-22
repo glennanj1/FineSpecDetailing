@@ -267,9 +267,9 @@ export default function Resources() {
                     >
                       ${tier.price}
                     </Typography>
-                    <Typography variant="h6" color="text.secondary" className={styles.Font}>
+                    {/* <Typography variant="h6" color="text.secondary" className={styles.Font}>
                       .99
-                    </Typography>
+                    </Typography> */}
                   </Box>
                   <ul>
                     {tier.description.map((line) => (
