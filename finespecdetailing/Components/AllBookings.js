@@ -4,6 +4,9 @@ import DataGrid from "./BookingTable";
 import Container from "@mui/material/Container";
 import Button from '@mui/material/Button'
 import Progress from '../Components/Progress.js'
+import BookingCards from '../Components/BookingCards.js'
+import Box from "@mui/material/Box";
+
 
 export default function AllBookings() {
   const { data: session, status } = useSession();
@@ -57,13 +60,16 @@ export default function AllBookings() {
           <DataGrid />
         ) : (
           <>
-              <h1>Hey {session.user.email}</h1>
+              <h1>Your Bookings:</h1>
               {!loading && bookings.length >= 1 ? (
-                <DataGrid />
+                <Box sx={{ minWidth: 275, maxWidth: 500, padding: 10 }}>
+                  {bookings?.map((book) => {
+                      return <BookingCards booking={book}/>
+                  })}
+                </Box>
             ) : (
-              
               <>
-              <Container component="main" maxWidth="md" style={{height: '50vh'}}>
+                <Container component="main" maxWidth="md" style={{height: '50vh'}}>
                   <h2>Currently No Bookings At this Time!</h2>{" "}
                   <Button variant="contained" color="primary" href="/book">
                     Book Now
