@@ -27,7 +27,7 @@ export default function BookingCards({booking}) {
 
   return (
     <>
-      <Card variant="outlined">
+      <Card variant="outlined" sx={{mb: 5, boxShadow: '10px 10px #607d8b'}}>
         <>
           <CardContent>
             <Typography
