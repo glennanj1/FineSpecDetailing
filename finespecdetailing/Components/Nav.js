@@ -32,7 +32,7 @@ const ResponsiveAppBar = () => {
 
   React.useEffect(() => {
   }) 
-  const pages = ['Services', 'Contact'];
+  const pages = ['Services', 'Contact', 'book'];
   const settings = session ? ['Profile', 'bookings'] : []
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -58,9 +58,9 @@ const ResponsiveAppBar = () => {
 
   return (
     <AppBar sx={{background: '#121212'}} position="static">
-      <Container sx={{background: '#121212'}} maxWidth="lg">
+      <Container sx={{background: '#121212'}} maxWidth="xl">
         <Toolbar disableGutters>
-          <Container component="div" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} >
+          <Container component="div" sx={{ display: { xs: 'none', lg: 'flex' }, mr: 1 }} >
             <Image src={fineLogo} width={150} height={30} layout="fixed" onClick={handlePicClick} />
           <Typography
             variant="h6"
@@ -129,7 +129,7 @@ const ResponsiveAppBar = () => {
                 sx={{ my: 2, color: 'white', display: 'block' }}
                 className={styles.Font}
               >
-                <Link href={`/${page}`} underline="none" >{page}</Link>
+                <Link href={`/${page}`} underline="none">{page}</Link>
               </Button>
             ))}
           </Box>
