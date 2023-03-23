@@ -7,7 +7,6 @@ import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
 
 export default function BookingCards({booking}) {
-    debugger;
   const date = new Date(booking?.appointment);
   const month = date.toLocaleString("default", { month: "long" });
   const day = date.getDate();
