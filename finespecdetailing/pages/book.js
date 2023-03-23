@@ -5,7 +5,7 @@ import { Container } from '@mui/material';
 export default function Book() {
   return (
     <>
-      <Container maxWidth="md">
+      <Container maxWidth="xl">
         <main className={styles.main}>            
           <AutoComplete />  
         </main>
