@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap");
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1400px) {
   .Font {
     font-family: "Cinzel", serif;
     font-weight: 700;
@@ -20,7 +20,7 @@
   }
   .Container {
     width: 100%;
-    height: 80vh;
+    height: 100vh;
   }
   .car {
     background: url("/mercedes.png");
@@ -30,7 +30,7 @@
   }
   .video {
     /* display: none; */
-    padding-top: 100px;
+    padding-top: 200px;
     width: 100vw;
   }
   .VideoStyle {
@@ -38,11 +38,11 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1400px) {
   .Font {
     font-family: "Cinzel", serif;
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.65rem;
     text-shadow: 10px 10px 10px black;
   }
   .SubHead {
@@ -64,7 +64,7 @@
   }
   .Container {
     width: 100vw;
-    height: 80vh;
+    height: 100%;
     background-position: center;
     background: url(/mercedes.png);
     background-size: cover;
