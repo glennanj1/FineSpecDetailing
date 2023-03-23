@@ -77,7 +77,6 @@ export default function DataGridDemo() {
   let handleAcceptAppointments = () => {
     setLoading(true);
     if (selectedIds.length) {
-      debugger;
       setBookings([]);
       fetch("/api/bookings/", {
         method: "POST",
