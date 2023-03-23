@@ -52,13 +52,11 @@ export default function ComboBox() {
     fetch("/api/cars?year=" + year + "&make=" + make + "&type=" + typeForApi)
     .then((r) => r.json())
     .then((d) => {
-      debugger;
       setLoading(false);
       if (d.Results.length > 0) {
         setCar(d);
         let a = [];
         d.Results.map((m) => {
-          debugger;
           console.log(m);
           a.push({value: m.Model_ID, label: m.Model_Name})
           //a.push({value: m.type, label: m.model});
@@ -66,8 +64,7 @@ export default function ComboBox() {
         setModels(a);
       } else {
         //needs to be a toast
-        debugger;
-        alert("empty list try again");
+        //alert("empty list try again");
         setModels([]);
         setType(null);
         setTypeForApi(null);
@@ -107,7 +104,6 @@ export default function ComboBox() {
   }, [year, make, model, name, email, phone, service, value, type]);
 
   let checkChange = (label, value) => {
-    debugger;
     if (year !== null && make !== null && type !== null) {
       switch (label) {
         case "year":
