@@ -1,63 +1,61 @@
-import React, {useState, useEffect} from 'react';
-import { DataGrid } from '@mui/x-data-grid';
-import { Container } from '@mui/material';
+import React, { useState, useEffect } from "react";
+import { DataGrid } from "@mui/x-data-grid";
+import Spinner from "./Spinner";
+import { Button } from "@mui/material";
+import ActionAlerts from "../Components/Alert.js";
 
 const columns = [
-  { field: '_id', headerName: 'id', width: 90 },
+  { field: "_id", headerName: "id", width: 90 },
+  { field: "accepted", headerName: "Accepted", width: 90 },
   {
-    field: 'name',
-    headerName: 'Full Name',
+    field: "name",
+    headerName: "Full Name",
     width: 150,
     editable: false,
   },
   {
-    field: 'email',
-    headerName: 'Email',
+    field: "email",
+    headerName: "Email",
     width: 150,
     editable: false,
   },
   {
-    field: 'phone',
-    headerName: 'Phone',
+    field: "phone",
+    headerName: "Phone",
     width: 110,
     editable: false,
   },
   {
-    field: 'appointment',
-    headerName: 'Appointment',
+    field: "appointment",
+    headerName: "Appointment",
+    width: 210,
+    editable: false,
+  },
+  {
+    field: "year",
+    headerName: "Year",
     width: 110,
     editable: false,
   },
   {
-    field: 'year',
-    headerName: 'Year',
+    field: "make",
+    headerName: "Make",
     width: 110,
     editable: false,
   },
   {
-    field: 'make',
-    headerName: 'Make',
+    field: "model",
+    headerName: "Model",
     width: 110,
     editable: false,
   },
   {
-    field: 'model',
-    headerName: 'Model',
+    field: "service",
+    headerName: "Service",
     width: 110,
     editable: false,
   },
-  {
-    field: 'service',
-    headerName: 'Service',
-    width: 110,
-    editable: false,
-  },
-  {
-    field: 'button',
-    headerName: 'Buttons',
-    width: 110,
-    editable: false,
-  },
+
   // {
   //   field: 'fullName',
   //   headerName: 'Full name',
@@ -69,60 +67,110 @@ const columns = [
   // },
 ];
 
-const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-];
-
 export default function DataGridDemo() {
-    const [bookings, setBookings] = useState([])
-    const [loading, setLoading] = useState(true)
-    useEffect(() => {
-     
-        fetch('/api/bookings/')
-        .then(res => {
-            setLoading(true);
-            if (res.ok) {
-                return res.json()
-            } else {
-                throw new Error('Something went wrong ...')
-            }
+  const [bookings, setBookings] = useState([]);
+  const [selectedIds, setSelectedIds] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [updateSuccess, setupdateSuccess] = useState(false);
+  const [updateFail, setupdateFail] = useState(false);
+  const [error, setError] = useState();
+  let handleAcceptAppointments = () => {
+    setLoading(true);
+    if (selectedIds.length) {
+      debugger;
+      setBookings([]);
+      fetch("/api/bookings/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          acceptAppointments: true,
+          ids: selectedIds,
+        }),
+      })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            console.alert("Error please report email john");
+          }
         })
-        .then(data => {
-            setLoading(false)
-            setBookings(data.data)
-        }).catch(e => {
-            console.log(e)
-            console.debug(e)
-            setLoading(false);
+        .then((data) => {
+          setLoading(false);
+          setupdateSuccess(true);
+          setTimeout(() => {
+            setupdateSuccess(false);
+            setError('');
+          }, 5000);
+          setBookings(data.data);
         })
-    }, [setBookings, setLoading])
+        .catch((e) => {
+          setError(e);
+          setupdateFail(true);
+          setTimeout(() => {
+            setupdateFail(false);
+            setError('');
+          }, 5000);
+          setLoading(false);
+        });
+    }
+  };
+  useEffect(() => {
+    fetch("/api/bookings/")
+      .then((res) => {
+        setLoading(true);
+        if (res.ok) {
+          return res.json();
+        } else {
+          setError('Error with response');
+          setupdateFail(true);
+          setTimeout(() => {
+            setupdateFail(false);
+            setError('');
+          }, 5000);
+        }
+      })
+      .then((data) => {
+        setLoading(false);
+        setBookings(data.data);
+      })
+      .catch((e) => {
+        setError(e);
+        setupdateFail(true);
+        setTimeout(() => {
+          setupdateFail(false);
+          setError('');
+        }, 5000);
+        setLoading(false);
+      });
+  }, [setBookings, setLoading]);
 
-  
+  if (loading) return <Spinner />;
+
   return (
-    <>
-      {loading ? <div>Loading...</div> :
-      <div style={{height: '70vh', width: '100%', paddingTop: '30px'}}>
-        <Container component="main" maxWidth="xl" style={{height: '50vh'}}>
-        <DataGrid
-          rows={bookings}
-          columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
-          disableSelectionOnClick
-          getRowId={(row) => row._id}
-        />
-        </Container>
-      </div>
-      }
-    </>
+    <div style={{ height: "80vh", width: "100%", paddingTop: "30px" }}>
+      {updateSuccess ? (
+        <ActionAlerts type="success" message="Successful Update" />
+      ) : null}
+      {updateFail ? (
+        <ActionAlerts type="error" message={"Error: " + error} />
+      ) : null}
+      <DataGrid
+        rows={bookings}
+        columns={columns}
+        pageSize={10}
+        rowsPerPageOptions={[10]}
+        checkboxSelection
+        disableSelectionOnClick
+        onSelectionModelChange={(ids) => {
+          setSelectedIds(ids);
+        }}
+        getRowId={(row) => row._id}
+      />
+      <Button variant="contained" onClick={handleAcceptAppointments}>
+        Accept Appointment
+      </Button>
+    </div>
   );
 }
