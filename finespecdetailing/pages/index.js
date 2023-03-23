@@ -37,7 +37,7 @@ export default function Index() {
         maxWidth="false"
         component="main"
         className={styles.Container + ' ' + styles.car}
-        sx={{ pt: 8, pb: 6, position: 'relative', overflow: 'hidden' }}
+        sx={{pt: 2, pb: 6, position: 'relative', overflow: 'hidden' }}
       >
         <div
           style={{
@@ -101,7 +101,9 @@ export default function Index() {
           </div>
         </div>
       </Container>
+      <div style={{position: 'absolute', backgroundImage: 'url(/clean.png)', backgroundAttachment: 'fixed', width: '100%', height: '100vh', backgroundSize: 'contain', zIndex: '-1', backgroundRepeat: 'repeat-y'}}>
 
+      </div>  
       <div className={styles.video}>
         <video
           autoPlay
