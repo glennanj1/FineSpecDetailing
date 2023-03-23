@@ -15,7 +15,7 @@ import { useRouter } from 'next/router'
 import styles from '../Styles/Autocomplete.module.css'
 import ActionAlerts from '../Components/Alert.js'
 import { signIn } from "next-auth/react";
-
+import Spinner from "../Components/Spinner.js"
 
 export default function ComboBox() {
   const router = useRouter()
@@ -43,6 +43,9 @@ export default function ComboBox() {
   const [email, setEmail] = useState(session?.user?.email);
   const [phone, setPhone] = useState(null);
   const [alert, setAlert] = useState(false);
+
+  // adding loading state to render spinner after submission
+  const [submitLoading, setSubmitLoading] = useState(false);
 
   const callFetch = () => {
     setModels([]);
@@ -79,7 +82,6 @@ export default function ComboBox() {
       // alert(e);
     });
   }
-
 
   useEffect(() => {
     if (year !== null) {
@@ -182,6 +184,7 @@ export default function ComboBox() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitLoading(true);
     const res = await fetch('/api/bookings/', {
       method: 'POST',
       headers: {
@@ -223,9 +226,10 @@ export default function ComboBox() {
         setValue(null);
         setAlert(false);
         router.push(`/booking/${data.data._id}`);
-      }, 6000);
+      }, 2000);
     } else {
       alert("Booking Failed Try Again");
+      setSubmitLoading(false);
     }
   };
     
@@ -234,15 +238,14 @@ export default function ComboBox() {
     e.preventDefault();
     setService(e.target.value);
   }
-  if (status === "loading") {
-    return <p>Loading...</p>
-  }
+
+  if (submitLoading || status === "loading")  return <Spinner />
+    
 
   if (status === "unauthenticated") {
-    debugger;
     signIn();
     return (
-      <Container component="main" maxWidth="md" style={{height: '80vh', display: 'flex', justifyContent: 'center', alignText: 'center', alignContent: 'center'}} className={styles.Font}>
+      <Container component="main" maxWidth="lg" style={{height: '80vh', display: 'flex', justifyContent: 'center', alignText: 'center', alignContent: 'center'}} className={styles.Font}>
         <h1>Redirecting...</h1>
       </Container>
     )
@@ -251,7 +254,7 @@ export default function ComboBox() {
   return (
     <>
       <Container component="main" maxWidth="xs">
-        {alert ? <ActionAlerts /> : null}
+        {alert ? <ActionAlerts type="success" message="Successfully Booked, Thank You!" /> : null}
         <Box
           sx={{
             marginTop: 8,
