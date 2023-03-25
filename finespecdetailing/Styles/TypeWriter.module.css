@@ -1,0 +1,34 @@
+@media screen and (min-width: 1400px) {
+    .TypeWriter {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        align-items: center;
+        z-index: 10;
+        align-content: flex-start;
+        flex-wrap: wrap;
+        height: 100%;
+        width: 100%;
+        font-size: 2.5rem;
+        font-family: "Cinzel", serif;
+        font-weight: 700;
+        text-shadow: 10px 10px 10px black;
+    }
+}
+@media screen and (max-width: 1400px) {
+    .TypeWriter {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        align-items: center;
+        z-index: 10;
+        align-content: flex-start;
+        flex-wrap: wrap;
+        height: 100%;
+        width: 100%;
+        font-size: 3.5rem;
+        font-family: "Cinzel", serif;
+        font-weight: 700;
+        text-shadow: 10px 10px 10px black;
+    }
+}

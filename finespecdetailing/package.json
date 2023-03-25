@@ -33,7 +33,8 @@
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "swr": "^1.3.0"
+    "swr": "^1.3.0",
+    "typewriter-effect": "^2.19.0"
   },
   "devDependencies": {
     "eslint": "latest",

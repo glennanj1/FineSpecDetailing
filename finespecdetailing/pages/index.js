@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Fade from '@mui/material/Fade';
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-
+import TypeWriter from "../Components/TypeWriter";
 export default function Index() {
   return (
     <>
@@ -101,9 +101,10 @@ export default function Index() {
           </div>
         </div>
       </Container>
-      <div style={{position: 'absolute', backgroundImage: 'url(/clean.png)', backgroundAttachment: 'fixed', width: '100%', height: '100vh', backgroundSize: 'contain', zIndex: '-1', backgroundRepeat: 'repeat-y'}}>
+      {/* <div style={{position: 'absolute', backgroundImage: 'url(/clean.png)', backgroundAttachment: 'fixed', width: '100%', height: '100vh', backgroundSize: 'contain', zIndex: '-1', backgroundRepeat: 'repeat-y'}}>
 
-      </div>  
+      </div>   */}
+      <TypeWriter />
       <div className={styles.video}>
         <video
           autoPlay
