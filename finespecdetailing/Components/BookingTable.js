@@ -92,7 +92,7 @@ export default function DataGridDemo() {
           if (res.ok) {
             return res.json();
           } else {
-            console.alert("Error please report email john");
+            console.log("Error please report email john");
           }
         })
         .then((data) => {
